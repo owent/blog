@@ -55,13 +55,20 @@ int main(){
 }
 ```
 上面的结果在GCC里输出
-Z4mainEUliPcE_
-Z4mainEUliPcE0_
-PFiiPcE
+>Z4mainEUliPcE_
+>Z4mainEUliPcE0_
+>PFiiPcE
+
 在clang(with -stdlib=libc++)中输出
-Z4mainE3\$_1
-Z4mainE3\$_0
-PFiiPcE
+>Z4mainE3\$_1
+>Z4mainE3\$_0
+>PFiiPcE
+
+在VC12中输出
+>class <lambda_215c4a8550380ee3200a8b722b5d538b>
+>class <lambda_cb3f26d0aaec1026a36e541fdceeb301>
+>int (__cdecl*)(int,char * __ptr64)
+
 可见，在不同的编译器中是可以有不同的命名方式的，并且对每一个不同的函数体（body部分）都会有一个特定的类型。
 而它实现了转换成普通函数的接口，故而 *f_t f3 = f2;* 这一行得以执行成功。
 而如果我们吧代码稍微修改一下：
