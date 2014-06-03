@@ -205,7 +205,7 @@ template<typename Tc>
 class task_action_mem_function<int, Tc>: public impl::task_action_impl;
 ```
 利用模板特化或偏特化实现在next函数传入不同类型对象时，构建不同的task action，以实现不同函数返回值的不同处理。
-但是对于仿函数，暂时我还没有找到可以让我在不使用C++ 11的decltype关键字并在编译期对其*operator()()*的返回值不同而产生差异化的方法。（这里如果哪位大神如果有比较简单的解决方案可以指导一下，感激不尽）
+但是对于仿函数，暂时我还没有找到一个跨平台并且兼容所有主流编译器并能在不使用C++ 11的decltype关键字并在编译期对其*operator()()*的返回值不同而产生差异化的完美的方案。（这里如果哪位大神如果有比较简单的解决方案可以指导一下，感激不尽）
 
 这也是上面使用lambda表达式作为next函数的参数时，必须有一行return 0;的原因。需要让lambda表达式自动推断返回类型位int型。
 
@@ -235,4 +235,92 @@ auto f = [](){
 int ret = func(f());
 ```
 这个函数在ret传入int型时返回lambda函数返回的int，否则返回0。然而如果lambda表达式没有返回值，就比较难处理了。
-因为不能出现类似 
+因为不能出现类似
+```cpp
+template<>
+int func(void) {
+    return 0;
+}
+```
+这样的语法。但是前文说过，在不使用decltype时这个问题很难解决，那么如果使用**decltype**如何实现呢？
+
+利用C++11 decltype关键字适配Lambda表达式
+---
+直接上代码吧
+```cpp
+#include <cstdio>
+#include <typeinfo>
+
+template<typename Tr>
+struct func {
+    template<typename Tf>
+    int operator()(Tf& f) {
+        f();
+        return -1;
+    }
+};
+
+template<>
+struct func<int>{
+
+    template<typename Tf>
+    int operator()(Tf& f) {
+        return f();
+    }
+};
+
+template<>
+struct func<void> {
+    template<typename Tf>
+    int operator()(Tf& f) {
+        f();
+        return 1;
+    }
+};
+
+
+int main() {
+
+    auto f1 = [](){
+        puts("Hello");
+    };
+
+    auto f2 = [](){
+        puts("Hello");
+        return 100;
+    };
+
+    auto f3 = [](){
+        puts("Hello");
+        return "hahaha";
+    };
+
+    int ret = 0;
+    
+    ret = func<decltype(f1())>()(f1);
+    printf("fn %s, ret %d\n", typeid(f1).name(), ret);
+    
+    ret = func<decltype(f2())>()(f2);
+    printf("fn %s, ret %d\n", typeid(f2).name(), ret);
+
+    ret = func<decltype(f3())>()(f3);
+    printf("fn %s, ret %d\n", typeid(f3).name(), ret);
+
+    return 0;
+}
+```
+这段代码分别适配了lambda表达式**无返回值**的，返回值类型是**int**的和反回值类型是**const char\***的。基本覆盖了前面提到的各种情况。
+究其原因，就是**decltype**可以在不执行表达式的情况下判定表达式的返回值。
+那么不使用**decltype**要实现这个功能思路就很清晰了，利用type_traits技术或者编译器功能来获取表达式类型。
+
+不使用C++11 decltype关键字的适配方案？
+---
+对于GCC和Clang编译器，所幸有个typeof关键字。
+对于VC编译器就比较悲剧了，还好VS2010以上版本已经支持decltype。
+
+当然还有一些比较绕的方法，可以通过手工注册一些信息来标识类型，但是这些方法个人感觉并不是很完美，这里就不列举了。
+
+写在最后
+======
+写这篇文章主要是对近期碰到的这个lambda表达式行为的一些总结和记录。当可以全线使用C++11特性的时候这些问题都不复存在。但是在现在这个过渡时期，大多生产环境用得都是很低版本的编译器，还不支持C++11的这些特性。而这个时候需要开发出兼容老编译器又支持一些高级特性的组件和库就尤其麻烦。
+希望C+11普及的那一天早日到来吧。
