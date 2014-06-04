@@ -13,10 +13,10 @@ C++ 11 标准发布，各大编译器都开始支持里面的各种新特性，�
 ------
 C++ 11 Lambda表达式的四种声明方式
 
-1. [ capture ] ( params ) mutable(optional) exception attribute -> ret { body }
-2. [ capture ] ( params ) -> ret { body }
-3. [ capture ] ( params ) { body }
-4. [ capture ] { body }
+1. \[ capture \] ( params ) mutable(optional) exception attribute -> ret { body }
+2. \[ capture \] ( params ) -> ret { body }
+3. \[ capture \] ( params ) { body }
+4. \[ capture \] { body }
 
 + **capture**是外部引用的参数
 + **params**是函数参数
