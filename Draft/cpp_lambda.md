@@ -11,7 +11,8 @@ C++ 11 标准发布，各大编译器都开始支持里面的各种新特性，�
 
 语法规则
 ------
-C++ 11 Lambda表达式的四种声明方式：
+C++ 11 Lambda表达式的四种声明方式
+
 1. [ capture ] ( params ) mutable(optional) exception attribute -> ret { body }
 2. [ capture ] ( params ) -> ret { body } 
 3. [ capture ] ( params ) { body } 
@@ -54,24 +55,31 @@ int main(){
     return 0;
 }
 ```
+
 上面的结果在GCC里输出
 >Z4mainEUliPcE_
+>
 >Z4mainEUliPcE0_
+>
 >PFiiPcE
 
 在clang(with -stdlib=libc++)中输出
 >Z4mainE3\$_1
+>
 >Z4mainE3\$_0
+>
 >PFiiPcE
 
 在VC12中输出
 >class <lambda_215c4a8550380ee3200a8b722b5d538b>
+>
 >class <lambda_cb3f26d0aaec1026a36e541fdceeb301>
+>
 >int (__cdecl*)(int,char * __ptr64)
 
 可见，在不同的编译器中是可以有不同的命名方式的，并且对每一个不同的函数体（body部分）都会有一个特定的类型。
 而它实现了转换成普通函数的接口，故而 *f_t f3 = f2;* 这一行得以执行成功。
-而如果我们吧代码稍微修改一下：
+而如果我们把代码稍微修改一下：
 ```cpp
 #include <cstdio>
 #include <typeinfo>
@@ -146,8 +154,7 @@ t1.then([_this](StorageFile^ resultOp){
 但是它这里有一点比较重要的是，它的task必须指定返回值且必须返回类型一致。
 
 而在我这里的任务接口里，我希望的是统一有一个int型的返回值（仿照进程执行结果只返回一个int型）。并且如果task的action函数是一个int型返回值的，接受它成为task返回码，否则使用默认的0作为返回值。
-目标是使其支持类似如下形式的调用：
-
+目标是使其支持类似如下形式的调用：\(参见: https://github.com/owt5008137/libcopp/blob/master/sample/sample_task_with_lambda.cpp\)
 ```cpp
 // create a task using lambda expression
 my_task_t::ptr_t first_task = my_task_t::create([&](){
