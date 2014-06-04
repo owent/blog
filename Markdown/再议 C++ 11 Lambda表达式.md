@@ -14,8 +14,8 @@ C++ 11 标准发布，各大编译器都开始支持里面的各种新特性，�
 C++ 11 Lambda表达式的四种声明方式
 
 1. [ capture ] ( params ) mutable(optional) exception attribute -> ret { body }
-2. [ capture ] ( params ) -> ret { body } 
-3. [ capture ] ( params ) { body } 
+2. [ capture ] ( params ) -> ret { body }
+3. [ capture ] ( params ) { body }
 4. [ capture ] { body }
 
 + **capture**是外部引用的参数
@@ -71,9 +71,9 @@ int main(){
 >PFiiPcE
 
 在VC12中输出
->class <lambda_215c4a8550380ee3200a8b722b5d538b>
+>class &lt;lambda_215c4a8550380ee3200a8b722b5d538b&gt;
 >
->class <lambda_cb3f26d0aaec1026a36e541fdceeb301>
+>class &lt;lambda_cb3f26d0aaec1026a36e541fdceeb301&gt;
 >
 >int (__cdecl*)(int,char * __ptr64)
 
@@ -154,7 +154,7 @@ t1.then([_this](StorageFile^ resultOp){
 但是它这里有一点比较重要的是，它的task必须指定返回值且必须返回类型一致。
 
 而在我这里的任务接口里，我希望的是统一有一个int型的返回值（仿照进程执行结果只返回一个int型）。并且如果task的action函数是一个int型返回值的，接受它成为task返回码，否则使用默认的0作为返回值。
-目标是使其支持类似如下形式的调用：\(参见: https://github.com/owt5008137/libcopp/blob/master/sample/sample_task_with_lambda.cpp\)
+目标是使其支持类似如下形式的调用：（参见: https://github.com/owt5008137/libcopp/blob/master/sample/sample_task_with_lambda.cpp ）
 ```cpp
 // create a task using lambda expression
 my_task_t::ptr_t first_task = my_task_t::create([&](){
