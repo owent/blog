@@ -113,15 +113,15 @@ Redhat搞了个dbus的分支[**kdbus**](http://en.wikipedia.org/wiki/Kdbus)[^kdb
 > Written with [StackEdit](https://stackedit.io/).
 
 
-[^skynet]: skynet是云峰设计的基于c和lua的开原游戏服务器框架，https://github.com/cloudwu/skynet
+[^skynet]: skynet: 云峰设计的基于c和lua的开原游戏服务器框架，https://github.com/cloudwu/skynet
 
-[^zeromq]: zeromq是一个高效面向消息的消息队列组件，[http://www.zeromq.org][1]
+[^zeromq]: zeromq: 一个高效面向消息的消息队列组件，[http://www.zeromq.org][1]
 
-[^boost]: boost是一个按照stl规范编写的跨平台高性能C++库，也被称为准STL库，很多C++标准特性都是由这里面提炼而来，http://www.boost.org
+[^boost]: boost: 一个按照stl规范编写的跨平台高性能C++库，也被称为准STL库，很多C++标准特性都是由这里面提炼而来，http://www.boost.org
 
-[^dbus]: D-Bus是一个用于Gnome、Qt的开源Bus系统解决方案，http://www.freedesktop.org/Software/dbus
+[^dbus]: D-Bus: 一个用于Gnome、Qt的开源Bus系统解决方案，http://www.freedesktop.org/Software/dbus
 
-[^kdbus]: 内核态D-Bus接口系统，https://github.com/gregkh/kdbus
+[^kdbus]: kdbus: 内核态D-Bus接口系统，https://github.com/gregkh/kdbus
 
 [^stackedit]: 我非常喜欢的一个强大的开源Markdown编辑器，https://stackedit.io
 
