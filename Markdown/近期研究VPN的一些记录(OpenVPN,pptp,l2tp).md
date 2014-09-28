@@ -4,7 +4,7 @@
 
 近期由于一些需要（特别是上Google），研究了下在VPS上搭建VPN服务器的方法。其中遇到一些坑，顺带记下来以备下次使用。
 
-其实在有VPS的情况下，还有另外一种替代方案。那就是在路由器上直接ssh隧道+sock5代理+使用autossh自动重连+使用polipo作HTTP代理+PAC文件自动代理切换。实现，最终我在家里就是这么搞得，而且这样对网络结构没有其他影响。
+其实在有VPS的情况下，还有另外一种替代方案。那就是在路由器上直接ssh隧道+sock5代理+使用[autossh](http://www.harding.motd.ca/autossh/)自动重连+使用[polipo](http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/)作HTTP代理+[PAC文件](https://calomel.org/proxy_auto_config.html)自动代理切换。实现，最终我在家里就是这么搞得，而且这样对网络结构没有其他影响。
 
 [我的PAC文件](https://github.com/owt5008137/OWenT.Articles/blob/master/Resource/2014/proxy.pac)
 
@@ -203,8 +203,10 @@ chkconfig --level 2345 xl2tpd on
 -------------
 痛苦了两周之后，发现其实有简单暴力的VPN方案，就是日本的开源软件[Softether VPN](https://www.softether.org/)
 
+Source列表: https://www.softether.org/5-download/src
 Github地址: https://github.com/SoftEtherVPN/SoftEtherVPN/
-Source: https://www.softether.org/5-download/src
+Google Code地址: https://code.google.com/p/softether/source/browse/
+Source Forge地址: http://sourceforge.net/p/softethervpn/code/ci/master/tree/src/
 
 这玩意简化了VPN配置，可以再Linux上部署，然后用Windows管理程序连上去管理。并且支持很多协议，OpenVPN,l2tp,IKEv1,IKEv2,IKEv3,sstp等。（不够我值尝试过openvpn和l2tp，很好用）
 
