@@ -3,7 +3,9 @@
 
 
 近期由于一些需要（特别是上Google），研究了下在VPS上搭建VPN服务器的方法。其中遇到一些坑，顺带记下来以备下次使用。
+
 其实在有VPS的情况下，还有另外一种替代方案。那就是在路由器上直接ssh隧道+sock5代理+使用autossh自动重连+使用polipo作HTTP代理+PAC文件自动代理切换。实现，最终我在家里就是这么搞得，而且这样对网络结构没有其他影响。
+
 [我的PAC文件](https://github.com/owt5008137/OWenT.Articles/blob/master/Resource/2014/proxy.pac)
 
 ----------
@@ -13,6 +15,7 @@
 OpenVPN
 -------------
 OpenVPN的话网上有很多教程啦，很容易配，过程挺繁琐。大致过程是
+
 1. 如果使用tun（第三层协议）的话检查tun设备(/dev/net/tun)
 2. 生成CA证书、服务器证书、客户端证书。（可以用**easy-rsa**生成，比较简单点）
 2. 配置防火墙端口开放和**路由转发** （可以拷贝openvpn的sample里的**firewall.sh**来用，注意没有内网网络设备的话把eth1相关的东西注释掉）
