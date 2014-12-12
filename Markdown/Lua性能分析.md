@@ -17,6 +17,7 @@ Lua性能分析本来有一些现成的工具，比如LuaProfile，不幸的是�
 一些问题
 ------
 但是实际实现过程中还是碰到了一些问题的，因为我直接用得luajit，所以不知道是不是luajit的bug。
+
 1. 本地C代码会触发LUA_MASKCALL钩子，不会触发LUA_MASKRET钩子
 2. 有些lua函数的返回钩子也不会被触发
 
