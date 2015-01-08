@@ -11,7 +11,7 @@ tolua++内存释放坑
 ------
 我这里用得是tolua++ 1.0.93版本。
 
-tolua++在new一个类的时候，会把类指针作为userdata传入lua，建立metatable并通过tolua_classevents函数给metatable注册魔术方法。
+tolua++在new一个类的时候，会把类指针作为userdata传入lua，建立metatable并通过**tolua_classevents**函数给metatable注册魔术方法。
 
 这里面可以看到gc方法被设成了 _G.tolua_gc_event
 ```cpp
@@ -22,7 +22,7 @@ tolua++在new一个类的时候，会把类指针作为userdata传入lua，建�
     lua_rawset(L,-3);
 ```
 
-那么关键是这个_G.tolua_gc_event被设成了什么，在tolua_open函数里可以找到
+那么关键是这个**_G.tolua_gc_event**被设成了什么，在**tolua_open**函数里可以找到
 ```cpp
         /* create gc_event closure */
         lua_pushstring(L, "tolua_gc_event");
@@ -34,13 +34,14 @@ tolua++在new一个类的时候，会把类指针作为userdata传入lua，建�
         lua_rawset(L, LUA_REGISTRYINDEX);
 ```
 
-垃圾回收函数使用的是class_gc_event并且添加了两个闭包参数_G.tolua_gc,_G.tolua_super。其中前一个用于设置全局metatable缓存。后一个貌似是基类。
+垃圾回收函数使用的是**class_gc_event**并且添加了两个闭包参数**_G.tolua_gc,_G.tolua_super**。其中前一个用于设置全局metatable缓存。后一个貌似是基类。
 
 比如新建一个Class, 指针是p，lua对象是t。那么相当于在lua里会设置
 ```lua
 _G.tolua_gc[p] = getmetatable(t)
 ```
-具体见tolua_register_gc函数
+
+具体见**tolua_register_gc**函数
 
 ```cpp
 TOLUA_API int class_gc_event (lua_State* L)
@@ -85,7 +86,7 @@ TOLUA_API int class_gc_event (lua_State* L)
 }
 ```
 
-然后坑爹的就来了tolua_default_collect这么实现的
+然后坑爹的就来了**tolua_default_collect**这么实现的
 
 ```cpp
 /* Default collect function
@@ -101,7 +102,7 @@ TOLUA_API int tolua_default_collect (lua_State* tolua_S)
 这个很2B的坑
 ------
 
-这么搞问题就来了，默认tolua++是没有设置.collector函数的（new一个自定义class之后调用push_collector的传入了空指针），然后释放的时候就华丽丽free掉了，且不说标准C++并不保证new的分配内存和malloc一样（虽然现在大部分编译器的实现确实一样），它竟然没调用析构。这意味着如果类里面有使用stl或者其他依赖析构来释放资源的成员类对象的话，就华丽丽地内存泄露了。
+这么搞问题就来了，默认tolua++是没有设置**.collector**函数的（new一个自定义class之后调用**push_collector**的传入了空指针），然后释放的时候就华丽丽free掉了，且不说标准C++并不保证new的分配内存和malloc一样（虽然现在大部分编译器的实现确实一样），它竟然**没调用析构函数**。这意味着如果类里面有使用stl或者其他依赖析构来释放资源的成员类对象的话，就华丽丽地内存泄露了。
 
 另外，网上随便搜了一下，也找到其他人也有发现这个问题。http://www.cnblogs.com/egmkang/archive/2012/07/01/2572064.html
 
