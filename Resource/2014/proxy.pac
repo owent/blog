@@ -1,7 +1,7 @@
 /**
- * æ­¤è„šæœ¬ä¸ºç½‘ç»œè®¿é—®è§„åˆ™åŒ¹é…è„šæœ¬ï¼ŒåŒ…æ‹¬ç›´è¿è®¿é—®ã€é€šè¿‡ä»£ç†è®¿é—®
- * è„šæœ¬ç»´æŠ¤äººï¼šOWenT
- * æ›´æ–°ï¼š2014/09/05
+ * ´Ë½Å±¾ÎªÍøÂç·ÃÎÊ¹æÔòÆ¥Åä½Å±¾£¬°üÀ¨Ö±Á¬·ÃÎÊ¡¢Í¨¹ı´úÀí·ÃÎÊ
+ * ½Å±¾Î¬»¤ÈË£ºOWenT(Å·ÎÄèº)
+ * ¸üĞÂ£º2015/01/05
  */
 
 function FindProxyForURL(url, host) {
@@ -18,11 +18,11 @@ function FindProxyForURL(url, host) {
 }
 
 function GetSocks5Proxy() {
-    return "172.18.111.3:8001";
+    return "172.18.10.1:4001";
 }
 
 function GetHttpProxy() {
-    return "172.18.111.3:9001";
+    return "172.18.10.1:4005";
 }
 
 function GetDefaultProxyCfg() {
@@ -30,11 +30,11 @@ function GetDefaultProxyCfg() {
 }
 
 function GetGFWProxyCfg() {
-    return "SOCKS5 " + GetSocks5Proxy() + "; PROXY " + GetHttpProxy() + "; DIRECT";
+    return "SOCKS5 " + GetSocks5Proxy() + "; DIRECT";
 }
 
 
-//ç‰¹å®šåŸŸåè®¿é—®ï¼Œèµ°ä»£ç†
+//ÌØ¶¨ÓòÃû·ÃÎÊ£¬×ß´úÀí
 function DomainGFWProxyCheck(url, host) {
     var domains = [
         "*.af.mil",
@@ -43,6 +43,7 @@ function DomainGFWProxyCheck(url, host) {
         "*.agoda.com",
         "*.agoda.net",
         "*.amazon.com",
+        "*.amazonaws.com",
         "*.android.com",
         "appspot.com",
         "*.appspot.com",
@@ -72,6 +73,9 @@ function DomainGFWProxyCheck(url, host) {
         "*.conferencing.com",
         "*.corrieredellosport.it",
         "*.corriere.it",
+        "*.doxygen.org",
+        "*.isocpp.org",
+        "isocpp.org",
         "*.dice.com",
         "discuss.com.hk",
         "*.discuss.com.hk",
@@ -94,14 +98,32 @@ function DomainGFWProxyCheck(url, host) {
         "*.gamebase.com.tw",
         "*.gamer.com.tw",
         "*.gazzetta.it",
+		"*.getfoxyproxy.org",
+		"getfoxyproxy.org",
         "*.gbc.tw",
 //        "github.com",
 //        "*.github.com",
         "*.glassdoor.com",
+        "*.gmail.com",
         "*.goldengame.com.tw",
-        "google*.*",
-        "*.google*.*",
+//        "google*.*",
+//        "*.google*.*",
+        "*.google.com.hk",
+        "google.com.hk",
+        "*.google.com.tw",
+        "google.com.tw",
+        "*.google.co.kr",
+        "google.co.kr",
+        "*.google.co.jp",
+        "google.co.jp",
+        "*.google.com",
+        "ipv6.google.com",
+        "developers.google.com",
+        "*.googlevideo.com",
         "*.googleusercontent.com",
+        "*.googlecode.com",
+        "*.googledrive.com",
+        "googledrive.com",
         "gstatic.com",
         "*.gstatic.com",
         "*.guardian.co.uk",
@@ -213,6 +235,7 @@ function DomainGFWProxyCheck(url, host) {
         "*.yfrog.com",
         "*.yiiframework.com",
         "*.youtube.com",
+        "*.youtube-nocookie.com",
         "*.ytimg.com",
         "*.zgncdn.com"
     ];
@@ -225,7 +248,7 @@ function DomainGFWProxyCheck(url, host) {
 }
 
 
-//åˆ¤æ–­IPæ˜¯å¦åˆæ³•
+//ÅĞ¶ÏIPÊÇ·ñºÏ·¨
 function CheckIPv4(host) {
     var ipValidate=/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
     if (ipValidate.test(host)) {
