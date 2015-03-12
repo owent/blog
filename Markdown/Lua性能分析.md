@@ -114,13 +114,13 @@ profile.hook(<lua函数>) -- 函数级性能分析钩子
 ![示例-2](res/2014/3.png)
 
 所有代码托管在：
-https://github.com/owt5008137/OWenT-s-Utils/blob/Lua/src_native/Script/Lua/LuaModule/LuaProfile.cpp
+https://github.com/owent-utils/lua/tree/master/src_native/Script/Lua/LuaModule/LuaProfile.cpp
 和
-https://github.com/owt5008137/OWenT-s-Utils/blob/Lua/src_native/Script/Lua/LuaModule/LuaProfile.h
+https://github.com/owent-utils/lua/tree/master/src_native/Script/Lua/LuaModule/LuaProfile.h
 
 除这两个文件已外依赖项目：
-1. https://github.com/owt5008137/OWenT-s-Utils/tree/C%26CPP/include/DesignPattern
-2. https://github.com/owt5008137/OWenT-s-Utils/blob/C%26CPP/include/String/StringCommon.h
+1. https://github.com/owent-utils/c-cpp/tree/master/include/DesignPattern
+2. https://github.com/owent-utils/c-cpp/tree/master/include/String/StringCommon.h
 
 共3个文件，如果不需要单件模式基类和字符串跨平台CMP函数的话可以移除掉，有兴趣的童鞋可自取。
 
