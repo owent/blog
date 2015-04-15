@@ -122,16 +122,7 @@ C++ÀàĞÍ°ó¶¨ÒÔºó£¬Ò²ÊÇ×ßµÃÉÏÃæµÄ»úÖÆ£¬Ëù²»Ò»ÑùµÄµØ·½ÊÇ£¬ÏñÖîÈç__tostring·½·¨ÎÒÃÇÔ
 
 ÁíÍâ¾ÍÊÇluaÀï±£´æC++¶ÔÏóÒ»¶¨Òª°ÑmetatableÉè³ÉÔ¤¶¨ÒåºÃµÄÔª±í¡£ÎªÁË±£´æC++µÄ³ÉÔ±º¯Êı£¬¾²Ì¬º¯Êı¡£ÎÒÃÇ²ÉÓÃÁËÈçÏÂ½á¹¹£º
 
-```flow
-static_table=>operation: ¾²Ì¬³ÉÔ±±í
-mem_table=>operation: ³ÉÔ±º¯Êı¼°±äÁ¿±í
-meta_table=>operation: °ó¶¨ÀàÃûµÄÔª±í
-inst_table=>operation: ÀàÊµÀı
-
-static_table->mem_table
-mem_table->meta_table
-meta_table->inst_table
-```
+[![ÀàÍ¼](res/2015/img01.svg)](http://yuml.me/diagram/scruffy/class/edit///%20Cool%20Class%20Diagram,%20%5B%E7%BB%91%E5%AE%9A%E7%B1%BB%E5%90%8D%E7%9A%84%E5%85%83%E8%A1%A8%5D%3C%3E-%3E%5B%E7%B1%BB%E5%AE%9E%E4%BE%8B%5D,%20%5B%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%8F%8A%E5%8F%98%E9%87%8F%E8%A1%A8%5D%3C%3E-%3E%5B%E7%BB%91%E5%AE%9A%E7%B1%BB%E5%90%8D%E7%9A%84%E5%85%83%E8%A1%A8%5D,%20%5B%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E8%A1%A8%5D%3C%3E-%3E%5B%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%8F%8A%E5%8F%98%E9%87%8F%E8%A1%A8%5D)
 
 È»ºó°ÑÏàÓ¦µÄº¯ÊıÉèÖÃÔÚ¶ÔÓ¦µÄtableÉÏ¾ÍÍêÊÂ¶ù¡£
 
