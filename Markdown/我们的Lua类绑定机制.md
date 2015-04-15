@@ -60,7 +60,7 @@ Lua原生并不支持面向对象设计,所以我们这里使用了一个简单的方法对面向对象的特性做一
 
 根据Lua的特性，对一个table而言，rawger找不到的东西会去查找metatable的index。类似这种查找法
 
-```
+```lua
 function gettable_event (table, key)
   local h
   if type(table) == "table" then
