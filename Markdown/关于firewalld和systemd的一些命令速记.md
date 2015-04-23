@@ -181,5 +181,37 @@ systemctl poweroff
 systemctl reboot
 ```
 
+顺带记一下怎么开启coredump
+------
+
+```bash
+# 
+COREDUMP_DIR=/home/coredump
+
+# 配置资源限制 
+echo '#!/bin/sh
+
+ulimit -S -c unlimited > /dev/null 2>&1
+' > /etc/profile.d/coredump.sh;
+
+# 配置文件模式 
+echo "kernel.core_pattern = $COREDUMP_DIR/%e.%t.%p.coredump" > /etc/sysctl.d/99-sysctl.conf;
+
+mkdir -p $COREDUMP_DIR;
+chmod 666 $COREDUMP_DIR;
+
+# 重载配置 
+sysctl -p;
+
+# 检查模式 
+cat /proc/sys/kernel/core_pattern ;
+
+# 资料 
+# http://man7.org/linux/man-pages/man5/core.5.html 
+# man 5 core 
+```
+
+
+
 > Written with [StackEdit](https://stackedit.io/).
 
