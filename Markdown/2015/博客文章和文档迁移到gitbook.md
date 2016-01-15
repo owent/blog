@@ -6,7 +6,7 @@
 
 之前写blog的时候一直用得是stackedit，是因为stackedit的对Markdown做了很多扩展，功能很强大，有自动目录、流程图、时序图等等，然后可以浏览器直接开很方便。但实际上这些功能写出的东西虽然不错，但是放到比如github上的时候，github不支持。目前大多数平台对Mardown的扩展都只是到了和github差不多的地步，没有到stackedit的程度。这也导致同样写得东西，复制到github或者其他的平台的时候还得过一遍样式，比较麻烦。而且这些扩展的功能也用得不太多。另外stackedit时不时被墙然后访问很不稳定也是挺麻烦的一件事儿。
 
-再来说这个**gitbook**，看中他是觉得它做了一个可持续集成的功能。就是github *push*完以后可以通知[gitbook](//gitbook.com)然后让gitbook自动构建文档内容。这点和比如jenkins和travis等等的CI系统很像。然后支持构建成pdf、epub（开源电子书格式）、mobi（kindle电子书格式）和在线书籍。然后版式也挺漂亮，还支持模板，引用等等，感觉确实蛮适合出版发行的。虽然目前为止Markdown的功能丰富程度比起Latex还差不少，但是上手难度也比Latex低不少。还是非常有潜力的，而且gitbook支持用javascript写得插件，以后变数也可以很多。
+再来说这个[gitbook](//gitbook.com)，看中他是觉得它做了一个可持续集成的功能。就是github *push*完以后可以通知[gitbook](//gitbook.com)然后让gitbook自动构建文档内容。这点和比如jenkins和travis等等的CI系统很像。然后支持构建成pdf、epub（开源电子书格式）、mobi（kindle电子书格式）和在线书籍。然后版式也挺漂亮，还支持模板，引用等等，感觉确实蛮适合出版发行的。虽然目前为止Markdown的功能丰富程度比起Latex还差不少，但是上手难度也比Latex低不少。还是非常有潜力的，而且gitbook支持用javascript写得插件，以后变数也可以很多。
 
 所以我决定也尝尝鲜，首先是吧blog里的文章记录转移过来，然后后面的开源项目的wiki或者文档也用这玩意构建。因为我用Markdown写博文的时候本来就备份了一份在github，所以有现成的仓库，然后把目录结构和配置调整成gitbook所支持的就可以了。
 
