@@ -11,5 +11,3 @@ License
 ------
 
 {% import "./LICENSE" %}
-
-{% include "./test.md" %}
