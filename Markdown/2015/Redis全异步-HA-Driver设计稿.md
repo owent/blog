@@ -63,7 +63,7 @@ redis作者建议对cluster的支持仿照[redis-rb-cluster](https://github.com/
 
 执行Redis指令流程:
 
-![redis-rb-cluster.png](res/2015/redis-rb-cluster.png)
+![redis-rb-cluster.png](redis-rb-cluster.png)
  
 ### 设计要点
 
@@ -114,7 +114,7 @@ redis作者建议对cluster的支持仿照[redis-rb-cluster](https://github.com/
 ### 设计总结
 简单地说，就是需要在hiredis上包一层，来完成对Cluster中的内部操作。实现的过程中会导致多一次malloc和多一次sds复制操作。流程图如下：
 
-![redis-ha-cluster.png](res/2015/redis-ha-cluster.png)
+![redis-ha-cluster.png](redis-ha-cluster.png)
 
 Sentinel适配设计
 ------
@@ -139,7 +139,7 @@ Sentinel比较简单，大体上和Cluster一致，有几个不一样的地方�
 ### 设计总结
 流程图如下：
 
-![redis-ha-sentinel.png](res/2015/redis-ha-sentinel.png)
+![redis-ha-sentinel.png](redis-ha-sentinel.png)
 
 集群健康报告
 ------
