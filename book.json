@@ -4,5 +4,6 @@
     "plugins": [
         "mathjax"
     ],
-    "pluginsConfig": {}
+    "pluginsConfig": {},
+    "language": "cn"
 }
