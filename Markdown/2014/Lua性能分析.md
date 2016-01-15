@@ -108,10 +108,10 @@ profile.hook(<lua函数>) -- 函数级性能分析钩子
 输出
 ------
 上面的总调用统计我这里直接输出csv文件或csv格式的文本了。有需要可以改成其他输出格式。
-![示例-1](res/2014/2.png)
+![示例-1](res/2014/lua-profile-1.png)
 
 精确的函数调用关系统计直接输出的lua table，可以通过lua转成其他格式。比如下图是我转成json之后的结果：
-![示例-2](res/2014/3.png)
+![示例-2](res/2014/lua-profile-2.png)
 
 所有代码托管在：
 https://github.com/owent-utils/lua/tree/master/src_native/Script/Lua/LuaModule/LuaProfile.cpp
