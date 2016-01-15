@@ -4,4 +4,6 @@
 
 使用Markdown写blog已经很久了，近期接触并且看了下流传已久的gitbook平台，感觉做得确实不错。、
 
-之前写blog的时候一直用得是stackedit，是因为stackedit的对Markdown做了很多扩展，功能很强大，有自动目录、流程图、时序图等等。但实际上这些功能写出的东西虽然不错，但是放到比如github上的时候，github不支持。目前大多数平台对Mardown的扩展都只是到了和github差不多的地步，没有到stackedit的程度。这
+之前写blog的时候一直用得是stackedit，是因为stackedit的对Markdown做了很多扩展，功能很强大，有自动目录、流程图、时序图等等，然后可以浏览器直接开很方便。但实际上这些功能写出的东西虽然不错，但是放到比如github上的时候，github不支持。目前大多数平台对Mardown的扩展都只是到了和github差不多的地步，没有到stackedit的程度。这也导致同样写得东西，复制到github或者其他的平台的时候还得过一遍样式，比较麻烦。而且这些扩展的功能也用得不太多。另外stackedit时不时被墙然后访问很不稳定也是挺麻烦的一件事儿。
+
+再来说这个gitbook，看中他是觉得它做了一个可持续集成的功能。就是githubpush完以后可以通知gitbook然后让gitbook自动构建文档内容。然后支持构建成pdf、epub（开源电子书格式）、mobi（kindle电子书格式）和在线书籍。
