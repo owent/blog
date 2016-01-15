@@ -98,7 +98,7 @@ extern "C" {
 ------
 这么一来可以写Web页来做客户端工具，比用C++方便多了。
 效果如下: 
-![示例-1](res/2014/1.png)
+![示例-1](cocos-qt-1.png)
 
 点击**“执行脚本”**就会执行上面注入的*debuger_invoke_run_code*函数。很Nice吧。
 
