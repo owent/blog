@@ -2,4 +2,6 @@
 博客文章和文档迁移到gitbook
 ======
 
-使用Markdown写blog已经很久了，近期接触并且看了下流传已久的gitbook平台，感觉做得确实不错。之前写blog的时候一直用得是stackedit，是因为stackedit的对Markdown做了很多扩展，功能很强大，有自动目录、流程图、时序图等等。但实际上这些功能写出的东西虽然不错，但是放到比如github上的时候，github不支持。目前大多数平台对Mardown的扩展都只是到了和github差不多的地步，没有到stackedit的程度。
+使用Markdown写blog已经很久了，近期接触并且看了下流传已久的gitbook平台，感觉做得确实不错。、
+
+之前写blog的时候一直用得是stackedit，是因为stackedit的对Markdown做了很多扩展，功能很强大，有自动目录、流程图、时序图等等。但实际上这些功能写出的东西虽然不错，但是放到比如github上的时候，github不支持。目前大多数平台对Mardown的扩展都只是到了和github差不多的地步，没有到stackedit的程度。这
