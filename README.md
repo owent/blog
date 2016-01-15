@@ -5,7 +5,7 @@ Directories
 ------
 - **Draft**: drafts in all formats
 - **Tex**: Published articles writed using tex/latex
-- **Markdown**: Published articles writed using tex/latex
+- **Markdown**: Published articles writed using markdown(only this directory will be analysised by gitbook)
 
 Notice
 ------
