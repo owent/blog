@@ -1,5 +1,6 @@
 {
     "title": "OWenT's Blog Articles",
+    "description": "This is such a great book!"
     "plugins": [
         "mathjax"
     ],
