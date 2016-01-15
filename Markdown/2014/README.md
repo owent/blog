@@ -2,7 +2,7 @@
 
 All articles posted in 2014 and older
 
-* [WP Code Highlight.js Project]([WP Code Highlight.js] Project.md)
+* [\[WP Code Highlight.js\] Project]([WP Code Highlight.js] Project.md)
 * [关于BUS通信系统的一些思考（一）](关于BUS通信系统的一些思考（一）.md)
 * [关于BUS通信系统的一些思考（二）](关于BUS通信系统的一些思考（二）.md)
 * [再议 C++ 11 Lambda表达式](再议 C++ 11 Lambda表达式.md)

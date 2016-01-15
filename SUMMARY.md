@@ -1,7 +1,7 @@
 # Summary
 
 * [2014及更早](Markdown/2014/README.md)
-    * [WP Code Highlight.js Project](Markdown/2014/[WP Code Highlight.js] Project.md)
+    * [\[WP Code Highlight.js\] Project](Markdown/2014/[WP Code Highlight.js] Project.md)
     * [关于BUS通信系统的一些思考（一）](Markdown/2014/关于BUS通信系统的一些思考（一）.md)
     * [关于BUS通信系统的一些思考（二）](Markdown/2014/关于BUS通信系统的一些思考（二）.md)
     * [再议 C++ 11 Lambda表达式](Markdown/2014/再议 C++ 11 Lambda表达式.md)
@@ -14,7 +14,7 @@
     * [我们的Lua类绑定机制](Markdown/2015/我们的Lua类绑定机制.md)
     * [关于firewalld和systemd的一些命令速记](Markdown/2015/关于firewalld和systemd的一些命令速记.md)
     * [Vim常用命令](Markdown/2015/Vim常用命令.md)
-    * [Redis全异步(HA)Driver设计稿](Markdown/2015/Redis全异步-HA-Driver设计稿.md)
+    * [Redis全异步\(HA\)Driver设计稿](Markdown/2015/Redis全异步-HA-Driver设计稿.md)
     * [小记最近踩得两个C++坑](Markdown/2015/小记最近踩得两个C++坑.md)
     * [关于BUS通信系统的一些思考（三）](Markdown/2015/关于BUS通信系统的一些思考（三）.md)
     * [libcopp更新 (merge boost 1.59 context)](Markdown/2015/libcopp更新-merge boost 1.59 context.md)
