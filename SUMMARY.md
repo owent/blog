@@ -1,7 +1,7 @@
 # Summary
 
 * [2014及更早](Markdown/2014/README.md)
-    * [\[WP Code Highlight.js\] Project](Markdown/2014/WP Code Highlight.js Project.md)
+    * [\[WP Code Highlight.js\] Project](Markdown/2014/[WP Code Highlight.js] Project.md)
     * [关于BUS通信系统的一些思考（一）](Markdown/2014/关于BUS通信系统的一些思考（一）.md)
     * [关于BUS通信系统的一些思考（二）](Markdown/2014/关于BUS通信系统的一些思考（二）.md)
     * [再议 C++ 11 Lambda表达式](Markdown/2014/再议 C++ 11 Lambda表达式.md)
