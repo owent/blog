@@ -10,4 +10,4 @@ Directories
 License
 ------
 
-{% import "./LICENSE" %}
+{% include "./LICENSE" %}
