@@ -13,7 +13,4 @@ Notice
 ------
 Some old articles are written by staticeditor and now in gitbook. Anything that only supported by stackeditor will be unavailable.(Such as [TOC] is used to generate a content table before and is unavailabled now). Those symbols are not removed in gitbook and only have a little effect on layout.
 
-License
-------
-
 {% include "./LICENSE.md" %}
