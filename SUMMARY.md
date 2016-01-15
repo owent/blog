@@ -18,4 +18,5 @@
     * 小记最近踩得两个C++坑
     * 关于BUS通信系统的一些思考（三）
     * libcopp更新 (merge boost 1.59 context)
+    * 给客户端写得LRU缓存
 
