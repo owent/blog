@@ -14,4 +14,4 @@ Some old articles are written by staticeditor and now in gitbook. Anything that 
 License
 ------
 
-{% Include "./LICENSE.md" %}
+{% include "./LICENSE.md" %}
