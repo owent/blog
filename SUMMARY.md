@@ -15,6 +15,7 @@
     * 关于firewalld和systemd的一些命令速记
     * Vim常用命令
     * Redis全异步(HA)Driver设计稿
+    * 小记最近踩得两个C++坑
     * 关于BUS通信系统的一些思考（三）
     * libcopp更新 (merge boost 1.59 context)
 
