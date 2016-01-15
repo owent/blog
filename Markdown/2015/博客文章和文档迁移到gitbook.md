@@ -8,7 +8,7 @@
 
 再来说这个[gitbook](//gitbook.com)，看中他是觉得它做了一个可持续集成的功能。就是github *push*完以后可以通知[gitbook](//gitbook.com)然后让gitbook自动构建文档内容。这点和比如jenkins和travis等等的CI系统很像。然后支持构建成pdf、epub（开源电子书格式）、mobi（kindle电子书格式）和在线书籍。然后版式也挺漂亮，还支持模板，引用等等，感觉确实蛮适合出版发行的。虽然目前为止Markdown的功能丰富程度比起Latex还差不少，但是上手难度也比Latex低不少。还是非常有潜力的，而且[gitbook](//gitbook.com)支持用javascript写得插件，以后变数也可以很多。
 
-所以我决定也尝尝鲜，首先是吧blog里的文章记录转移过来，然后后面的开源项目的wiki或者文档也用这玩意构建。因为我用Markdown写博文的时候本来就备份了一份在github，所以有现成的仓库，然后把目录结构和配置调整成[gitbook](//gitbook.com)所支持的就可以了。
+所以我决定也尝尝鲜，首先是吧blog里的文章记录转移过来，然后后面的开源项目的wiki或者文档也用这玩意构建。因为我用Markdown写博文的时候本来就备份了一份在[github](//github.com)，所以有现成的仓库，然后把目录结构和配置调整成[gitbook](//gitbook.com)所支持的就可以了。
 
 然后主要是之前很多文章里用到了一些stackedit的扩展功能比如说在stackedit里**[TOC]**表示目录树。想这些功能[gitbook](//gitbook.com)里有插件提供一样的功能，但是语法不太一样。反正是博文又不是出书也不是文档，我就不更新了。实际上对阅读影响也不大，而且在我的blog里内容是正常的。
 
