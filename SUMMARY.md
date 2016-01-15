@@ -19,4 +19,5 @@
     * [关于BUS通信系统的一些思考（三）](Markdown/2015/关于BUS通信系统的一些思考（三）.md)
     * [libcopp更新 (merge boost 1.59 context)](Markdown/2015/libcopp更新-merge boost 1.59 context.md)
     * [给客户端写得LRU缓存](Markdown/2015/给客户端写得LRU缓存.md)
+    * [博客文章和文档迁移到gitbook](Markdown/2015/博客文章和文档迁移到gitbook.md)
 
