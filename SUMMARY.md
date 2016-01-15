@@ -9,7 +9,7 @@
     * [集成Qt Webkit 到cocos2d-x](Markdown/2014/集成Qt Webkit 到cocos2d-x.md)
     * [tolua++内存释放坑](Markdown/2014/tolua++内存释放坑.md)
     * [Lua性能分析](Markdown/2014/Lua性能分析.md)
-    * [回顾2014](Markdown/2014/回顾2014.md)
+    * [回顾2014](回顾2014.md)
 * [2015](Markdown/2015/README.md)
     * [我们的Lua类绑定机制](Markdown/2015/我们的Lua类绑定机制.md)
     * [关于firewalld和systemd的一些命令速记](Markdown/2015/关于firewalld和systemd的一些命令速记.md)
