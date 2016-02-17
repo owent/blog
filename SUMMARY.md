@@ -21,4 +21,5 @@
     * [给客户端写得LRU缓存](Markdown/2015/给客户端写得LRU缓存.md)
     * [博客文章和文档迁移到gitbook](Markdown/2015/博客文章和文档迁移到gitbook.md)
 * [2016](Markdown/2016/README.md)
+    * [我们的Lua类绑定机制](Markdown/2015/我们的Lua类绑定机制.md)
 
