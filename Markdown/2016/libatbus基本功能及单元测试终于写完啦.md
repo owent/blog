@@ -25,6 +25,7 @@ cppcheck: libatbus无error报告，其他类型的报告都是误报或功能预
 
 早期的压力测试，大约每个端点（单线程）内存通道大约1.2GB/s，socket大约200MB/s。近期尚未压力测试。
 
+目前[libatbus](https://github.com/owt5008137/libatbus)中的内存通道已经被单独抽出来并在生产环境中使用了比较长的时间了。
 
 后续计划
 ------
