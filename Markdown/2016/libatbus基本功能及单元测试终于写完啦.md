@@ -43,4 +43,6 @@ cppcheck: libatbus无error报告，其他类型的报告都是误报或功能预
 
 proxy和proxy之间为[libatbus](https://github.com/owt5008137/libatbus)的兄弟节点，proxy和其下属的服务之间是父子关系。这样，在同一个proxy下的服务之间互相访问时，就会建立直接连接，而跨proxy的通信会经过proxy转发。这点和现有的服务器一样，并且额外还预留了多级的服务分层的策略。
 
-由于使用zookeeper做去中心化并维护proxy组状态，所以各种服务之间可以很容易做到平行扩容。初步的想法当然还是主要针对游戏服务器，可以是手游、页游或者MMO。
+由于使用zookeeper做去中心化并维护proxy组状态，所以各种服务之间可以很容易做到平行扩容。初步的想法当然还是主要针对游戏服务器，前期是手游、页游，后期可以扩展到MMO。
+
+另外，框架中优先也会提供C++的协程模式的RPC行为，这涉及我写得另一个库[libcopp](https://github.com/owt5008137/libcopp)
