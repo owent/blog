@@ -45,4 +45,4 @@ proxy和proxy之间为[libatbus](https://github.com/owt5008137/libatbus)的兄�
 
 由于使用zookeeper做去中心化并维护proxy组状态，所以各种服务之间可以很容易做到平行扩容。初步的想法当然还是主要针对游戏服务器，前期是手游、页游，后期可以扩展到MMO。
 
-另外，框架中优先也会提供C++的协程模式的RPC行为，这涉及我写得另一个库[libcopp](https://github.com/owt5008137/libcopp)
+另外，框架中优先也会提供C++的协程模式的RPC行为，这涉及我写得另一个库[libcopp](https://github.com/owt5008137/libcopp)。同样跨平台，但是这个库在不支持TLS的系统上无法使用类似this_xxx的功能（目前仅发现Android和IOS下不支持TLS）。
