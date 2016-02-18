@@ -22,7 +22,7 @@ MSVC 14 两处类型转换warning（无影响），单元测试除unix socket外
 valgrind: 无内存泄露
 cppcheck: libatbus无error报告，其他类型的报告都是误报或功能预留。单元测试和压力测试工具有3处error报告，全部都是误报。
 
-早期的压力测试，大约每个端点（单线程）内存通道大约1.2GB/s，socket大约200MB/s
+早期的压力测试，大约每个端点（单线程）内存通道大约1.2GB/s，socket大约200MB/s。近期尚未压力测试。
 
 
 后续计划
