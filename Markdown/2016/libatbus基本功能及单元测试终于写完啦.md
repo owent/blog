@@ -41,4 +41,4 @@ cppcheck: libatbus无error报告，其他类型的报告都是误报或功能预
 
 主要的思路就是，proxy-services的方式。每个逻辑服务器组由一个proxy和多个服务组成，proxy和proxy之间直接直接通过zookeeper维护状态并实现去中心化。
 
-proxy和proxy之间为[libatbus](https://github.com/owt5008137/libatbus)的兄弟节点，proxy和其下属的服务之间是父子关系
+proxy和proxy之间为[libatbus](https://github.com/owt5008137/libatbus)的兄弟节点，proxy和其下属的服务之间是父子关系。这样，在同一个proxy下的服务之间互相访问时，就会建立直接连接，而跨proxy的通信会经过proxy转发。同时还预留了不止一层的服务分层的策略。
