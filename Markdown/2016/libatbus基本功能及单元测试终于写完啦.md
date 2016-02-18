@@ -40,6 +40,6 @@ cppcheck: libatbus无error报告，其他类型的报告都是误报或功能预
 接下来我会开始抽时间搞游戏服务器的框架，大体上还是和现有的系统差不多，但是模块分离会做得更好一些。再加上[libatbus](https://github.com/owt5008137/libatbus)性能也会更好一些。并且会比现有的框架更简洁。
 
 
-主要的思路就是，proxy-services的方式。
+主要的思路就是，proxy-services的方式。每个逻辑服务器组由一个proxy和多个服务组成，proxy和proxy之间直接直接通过zookeeper维护状态
 
 proxy-zookeeper
