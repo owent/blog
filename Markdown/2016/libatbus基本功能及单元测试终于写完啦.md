@@ -15,6 +15,11 @@ libatbus基本功能及单元测试终于写完啦
 目前状态
 ------
 Github仓库地址： https://github.com/owt5008137/libatbus
+CentOS 7.1 + GCC 4.8.4 无warning
+MSVC 14 两处类型转换warning
+
+单元测试
+valgrind
 
 
 后续计划
