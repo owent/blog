@@ -47,3 +47,4 @@ proxy和proxy之间为[libatbus](https://github.com/owt5008137/libatbus)的兄�
 
 另外，框架中优先也会提供C++的协程模式的RPC行为，这涉及我写得另一个库[libcopp](https://github.com/owt5008137/libcopp)。同样跨平台，但是这个库在不支持TLS的系统上无法使用类似this_xxx的功能（目前仅发现Android和IOS下不支持TLS）。并且这个库在目前的生产环境中已经使用了比较长的时间。
 
+整合的工作还很多，任重而道远啊。
