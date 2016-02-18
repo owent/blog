@@ -7,4 +7,4 @@ libatbus基本功能及单元测试终于写完啦
 [《关于BUS通信系统的一些思考（二）》](https://www.owent.net/gCsOx)
 [《关于BUS通信系统的一些思考（三）》](https://www.owent.net/V1j6B)
 
-这样
+在实现这个[libatbus](https://github.com/owt5008137/libatbus)的过程中，为了能够跨平台，这样我们就有了性能不输
