@@ -21,7 +21,7 @@ libatbus基本功能及单元测试终于写完啦
 Github仓库地址： https://github.com/owt5008137/libatbus
 CentOS 7.1 + GCC 4.8.4 无warning，单元测试全部pass
 MSVC 14 两处类型转换warning（无影响），单元测试除unix socket外全部pass
-OSX + Clang
+OSX + Clang(7.0) 无warning，单元测试全部pass
 
 valgrind: 无内存泄露
 cppcheck: libatbus无error报告，其他类型的报告都是误报或功能预留。单元测试和压力测试工具有3处error报告，已经确认全部都是误报。
