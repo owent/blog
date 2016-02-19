@@ -18,13 +18,12 @@ libatbus基本功能及单元测试终于写完啦
 
 目前状态
 ------
-**Github仓库地址**： https://github.com/owt5008137/libatbus
-**CentOS 7.1 + GCC 4.8.4** 无warning，单元测试全部pass
-**MSVC 1900(VS 2015社区版)** 两处类型转换warning（无影响），单元测试除unix socket外全部pass
-**OSX + Clang(7.0)** 无warning，单元测试全部pass
-
-**valgrind**: 无内存泄露
-**cppcheck**: libatbus无error报告，其他类型的报告都是误报或功能预留。单元测试和压力测试工具有3处error报告，已经确认全部都是误报。
++ **Github仓库地址**： https://github.com/owt5008137/libatbus
++ **CentOS 7.1 + GCC 4.8.4** 无warning，单元测试全部pass
++ **MSVC 1900(VS 2015社区版)** 两处类型转换warning（无影响），单元测试除unix socket外全部pass
++ **OSX + Clang(7.0)** 无warning，单元测试全部pass
++ **valgrind**: 无内存泄露
++ **cppcheck**: libatbus无error报告，其他类型的报告都是误报或功能预留。单元测试和压力测试工具有3处error报告，已经确认全部都是误报。
 
 早期的压力测试，大约每个端点（单线程）内存通道大约1.2GB/s，socket大约200MB/s。近期尚未压力测试。
 
@@ -32,18 +31,21 @@ libatbus基本功能及单元测试终于写完啦
 
 后续计划
 ------
-+ CI集成
+* CI集成
 > 后面会抽空集成Linux和Windows的CI系统，前期没有集成是因为开发中没有完成，代码不一定能编译过或者单元测试不一定能过
 > 
 > 单元测试，Windows环境，Linux环境，MinGW环境都有免费的CI可以用，OSX比较麻烦，可能还是得手动跑
+> 
 
-+ 全局路由表同步
+* 全局路由表同步
 > 目前仅实现基本功能，暂未做全局路由表同步的功能，等后续服务器中需要用这个功能的时候再加。
 > 
 > 这也是个比较实用的功能，可以用于把一些静态的工作转为动态的模式。但是目前优先还是跑通基本框架，再加后续扩展功能。
+> 
 
-+ 广播
+* 广播
 > 广播其实就是个函数糖，实际发送底层还是得一个一个发，不过也可以简化一些操作就是了
+> 
 
 服务器应用框架
 ------
