@@ -23,8 +23,8 @@ libatbus基本功能及单元测试终于写完啦
 **MSVC 1900(VS 2015社区版)** 两处类型转换warning（无影响），单元测试除unix socket外全部pass
 **OSX + Clang(7.0)** 无warning，单元测试全部pass
 
-valgrind: 无内存泄露
-cppcheck: libatbus无error报告，其他类型的报告都是误报或功能预留。单元测试和压力测试工具有3处error报告，已经确认全部都是误报。
+**valgrind**: 无内存泄露
+**cppcheck**: libatbus无error报告，其他类型的报告都是误报或功能预留。单元测试和压力测试工具有3处error报告，已经确认全部都是误报。
 
 早期的压力测试，大约每个端点（单线程）内存通道大约1.2GB/s，socket大约200MB/s。近期尚未压力测试。
 
