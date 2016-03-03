@@ -22,4 +22,6 @@
     * [博客文章和文档迁移到gitbook](Markdown/2015/博客文章和文档迁移到gitbook.md)
 * [2016](Markdown/2016/README.md)
     * [libatbus基本功能及单元测试终于写完啦](Markdown/2016/libatbus基本功能及单元测试终于写完啦.md)
+    * [理解Raft算法](Markdown/2016/理解Raft算法.md)
+    * 
 
