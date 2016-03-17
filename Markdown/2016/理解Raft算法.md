@@ -1,10 +1,43 @@
-理解Raft算法
-======
+# 理解Raft算法
 
-[TOC]
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-前言
-------
+- [理解Raft算法](#理解raft算法)
+	- [前言](#前言)
+	- [基本算法设计](#基本算法设计)
+		- [AppendEntries RPC（心跳、消息同步RPC）](#appendentries-rpc心跳消息同步rpc)
+			- [RPC请求:](#rpc请求)
+			- [RPC回复:](#rpc回复)
+			- [接收方判定条件](#接收方判定条件)
+		- [RequestVote RPC（竞选主节点RPC）](#requestvote-rpc竞选主节点rpc)
+			- [RPC请求:](#rpc请求)
+			- [RPC回复:](#rpc回复)
+			- [接收方判定条件](#接收方判定条件)
+		- [服务器逻辑规则](#服务器逻辑规则)
+			- [所有服务器](#所有服务器)
+			- [[从节点](#follower)](#从节点follower)
+			- [[参选节点](#candidate)](#参选节点candidate)
+			- [[主节点](#leader)](#主节点leader)
+	- [未提及的细节和一些思考](#未提及的细节和一些思考)
+		- [主节点切换期间的消息（Log）处理](#主节点切换期间的消息log处理)
+	- [补充内容](#补充内容)
+		- [定时器](#定时器)
+		- [扩容、缩容和故障转移](#扩容缩容和故障转移)
+			- [两阶段提交](#两阶段提交)
+			- [迁移过程中的几个要点](#迁移过程中的几个要点)
+		- [客户端接入](#客户端接入)
+			- [容错和重发](#容错和重发)
+			- [只读订阅](#只读订阅)
+			- [负载均衡和容灾通知(主节点变更)](#负载均衡和容灾通知主节点变更)
+		- [压缩数据](#压缩数据)
+	- [与[Paxos](https://zh.wikipedia.org/zh-cn/Paxos%E7%AE%97%E6%B3%95)的差异](#与paxoshttpszhwikipediaorgzh-cnpaxose7ae97e6b395的差异)
+	- [应用层面的思考](#应用层面的思考)
+	- [[Raft](https://raft.github.io/)的实现](#rafthttpsraftgithubio的实现)
+
+<!-- /TOC -->
+
+## 前言
+
 最近在分布式系统一致性方面，[Raft](https://raft.github.io/)算法比较火啊。所以就抽时间看了下这个算法。
 
 之前已经有[Paxos算法](https://zh.wikipedia.org/zh-cn/Paxos%E7%AE%97%E6%B3%95)，用于解决分布式系统最终一致性问题，而且已经有了[zookeeper](http://http://zookeeper.apache.org/)这个成熟的开源实现。那么这个[Raft](https://raft.github.io/)算法有啥用呢？按照[Raft](https://raft.github.io/)官网的说法，这个算法的错误容忍和性能和[Paxos算法](https://zh.wikipedia.org/zh-cn/Paxos%E7%AE%97%E6%B3%95)类似，但是拥有更加简单易懂的设计。
@@ -13,8 +46,8 @@
 
 那么它是如何做到这些的呢？
 
-基本算法设计
-------
+## 基本算法设计
+
 [Raft](https://raft.github.io/)的基本设计可以参照官网介绍 https://raft.github.io/
 
 官方网站上的图例可以点击节点，然后**模拟**节点crash或者超时或者收到请求时的通信流程。其实也是一个javascript的简单实现，有利于我们理解[Raft](https://raft.github.io/)算法的流程。
@@ -96,7 +129,7 @@ VoteGranted (同样我认为这里用返回码更好) | 如果收到同意票，
 
 2. 如果[Voted For](#voted_for)是空的或者和***CandidateId***相等，则仅[参选节点](#candidate)的**消息最新(up-to-date)**才投同意票
 > **消息最新(up-to-date)**的判定方式是: 如果[参选节点](#candidate)的最后的[消息](#log)的[Term](#term)比投票者更大或者[Term](#term)相等且[CommitIndex](#commit_index)大于等于投票节点的最后一个[消息](#log)。那么[参选节点](#candidate)的消息会被投票者认为是最新（只是相对于投票者更新）
-> 
+>
 > *PS: 这里我一开始认为是节点的[Term](#term)和[CommitIndex](#commit_index)，导致后面的协商流程一直理解不了。但是这是实际上应该是最后一条[消息](#log)的[Term](#term)和[CommitIndex](#commit_index)。*
 
 ### 服务器逻辑规则
@@ -124,10 +157,9 @@ VoteGranted (同样我认为这里用返回码更好) | 如果收到同意票，
 + 如果最后一次[消息](#log)的[CommitIndex](#commit_index)大于等于某个[从节点](#follower)的[NextIndex](#next_index)，发送**AppendEntries RPC**，并附带从[从节点](#follower)的[NextIndex](#next_index)开始的所有消息
 	+ 如果成功则更新相应[从节点](#follower)的[NextIndex](#next_index)和[MatchIndex](#match_index)
 	+ 如果失败则是发生数据不一致，[NextIndex](#next_index) = [NextIndex](#next_index) - 1然后重试
-+ 如果存在N，满足N>[CommitIndex](#commit_index)，并且大多数的[MatchIndex\[i\]](#match_index) >= N，并且Log[N].term == [CurrentTerm](#term)，设置[CurrentTerm](#term)=N
++ 如果存在N，满足N>[CommitIndex](#commit_index)，并且大多数的[MatchIndex[i]](#match_index) >= N，并且Log[N].term == [CurrentTerm](#term)，设置[CurrentTerm](#term)=N
 
-未提及的细节和一些思考
-------
+## 未提及的细节和一些思考
 
 前文提到的各种情况和边界都可以使用[Raft](https://raft.github.io/)主页上的工具模拟出来，流程前面已经写得比较清楚了我就不复述了，只提出我认为比较重要的几个地方和论文里没详细说明的一些细节。
 
@@ -138,7 +170,7 @@ VoteGranted (同样我认为这里用返回码更好) | 如果收到同意票，
 
 4. **竞选超时**时间只在初始化和每次发起竞选的时候随机，其他情况都是复用之前的超时时间。
 > 这样保证了发生冲突的时候，最终会有一个节点的**竞选超时**比较短，而其他的随机后**竞选超时**较长的节点在触发超时时间之前会收到RequestVote RPC（竞选主节点RPC），从而变为[从节点](#follower)
-> 
+>
 > 但是在节点数量特别多的时候我觉得也会出现一直没办法选举出主节点的情况，我的想法是再区分**竞选超时**的定时器为两种，[从节点](#follower)的**竞选超时**取值区间在一个比较大的值范围，而[参选节点](#candidate)的**竞选超时**取值区间在一个比较小的值范围。这样能保证[参选节点](#candidate)的数量能够收敛，即[参选节点](#candidate)变为[从节点](#follower)后几乎不可能变回[参选节点](#candidate)
 
 5. 不同[从节点](#follower)的心跳定时器是分开计的，但是间隔是一样的（这是为了减少[从节点](#follower)转变为竞选状态的可能性）
@@ -169,8 +201,8 @@ VoteGranted (同样我认为这里用返回码更好) | 如果收到同意票，
 
 另外，可以在新[主节点](#leader)被选举出来时立刻提交一个空[消息](#log)。用来加快未提交的消息被确认的过程。
 
-补充内容
-------
+## 补充内容
+
 以下内容是补充这个算法的部分，不是最核心的内容。
 
 ### 定时器
@@ -241,15 +273,15 @@ VoteGranted (同样我认为这里用返回码更好) | 如果收到同意票，
 
 不过无论用哪种方法，客户端都要处理发送超时和网络失败，然后随机找一个有效的新目标进行发送。
 
-[主节点](#leader)丢失期间，客户端commit的消息会得不到回复。
+[主节点](#leader)丢失期间，客户端commit的消息会得不到回复。最终会触发前面的超时。
 
 ### 压缩数据
 前面说到，所有的消息交给[主节点](#leader)必须只能执行追加操作。那么长时间运行以后，数据量必然越来越大。这时候如果发生扩容或者改变节点，那么复制的量将是不可计量的。这时候就需要对集群中的数据进行适当的处理，减少不必要的[Log](#log)。
 
 比如说，先执行了 set a=1,再执行 set a=2。那么其实前一条也就不需要一直保存在集群中了。
 
-与[Paxos](https://zh.wikipedia.org/zh-cn/Paxos%E7%AE%97%E6%B3%95)的差异
-------
+## 与[Paxos](https://zh.wikipedia.org/zh-cn/Paxos%E7%AE%97%E6%B3%95)的差异
+
 [《In Search of an Understandable Consensus Algorithm (Extended Version)》](http://ramcloud.stanford.edu/raft.pdf)里面有很详细的[Raft](https://raft.github.io/)和[Paxos](https://zh.wikipedia.org/zh-cn/Paxos%E7%AE%97%E6%B3%95)性能比较的实测结果，我就不再参合再测一遍了。但是根据自己对这两算法的差异的理解，我自己也能有一些总结，可能不完全正确。
 
 [Paxos](https://zh.wikipedia.org/zh-cn/Paxos%E7%AE%97%E6%B3%95)可以同时提交和处理多个提案，但是发生冲突时，理论上会有更高的延时（协商时间），而[Raft](https://raft.github.io/)算法会天生地把消息确定一个先后顺序。大幅减少了冲突的可能性。
@@ -258,15 +290,33 @@ VoteGranted (同样我认为这里用返回码更好) | 如果收到同意票，
 
 性能方面，其实无论[Raft](https://raft.github.io/)还是[Paxos](https://zh.wikipedia.org/zh-cn/Paxos%E7%AE%97%E6%B3%95)，每个消息都需要经过大部分节点的投票同意，并且都是每个节点最终会得到最终一致的结果，所以正常情况下，他们的性能一样也比较理解。不同的就是[Raft](https://raft.github.io/)的心跳包比较频繁，所以空跑时负载应该会更高一些。
 
-应用层面的思考
-------
+## 应用层面的思考
 
-Redis cluster自动负载均衡
-管理者<->leader
+[Raft](https://raft.github.io/) 可以用在哪些地方呢？首先想到和我们的项目相关的一些东西。
+
+第一个是**Redis Cluster**自动负载均衡。因为Redis的Cluster的slot和对应主从节点的关系是必须手动配置的。必定要人工感知和手动配置还是比较麻烦，所以如果可以有服务来管理slot的分配和负载均衡就再好不过了。
+
+再或者我们目前的**聊天服务器**。目前的架构是类似**Redis Cluster**的按slot分配订阅通道的，区别就是如果发生故障会自动转移slot到其他可用的节点。然而由于要保证slot分配的最终结果一致，是需要配置一个静态的**控制节点**，并且只能由控制节点来进行slot的故障转移和负载均衡操作，然而控制节点是单点，如果控制节点崩溃，可能聊天的部分功能短时间（控制节点重启前）不可用，并且故障转移和负载均衡也不可用，并且控制节点重启后会强制执行一次负载均衡（保证以控制节点为准）。如果使用[Raft](https://raft.github.io/) 算法，则可以由它来决断出控制节点或者slot分配记录。由于最终结果必定是一致的，可以达到去中心化的效果。
+
+上面提到的两个应用其实都是用于决断服务器集群的分配和配置，这也是我觉得最有意义的地方。而由于[Raft](https://raft.github.io/) 的响应请求的能力并不是非常强，并且节点越多，性能越差。所以最重要的其实是它能够提供一个**强一致性**并且**高可用**的解决方案。而如果一个服务需要很高的性能或能够通过平行扩容来提升承载能力，则需要另外提供*分库分表*或者*hash*或者类似**Redis Cluster**的*槽分配*的方案。这时候[Raft](https://raft.github.io/)就可以用于维护这些*分库分表*或者*hash*或者类似**Redis Cluster**的*槽分配*的配置，并达到最终一个去中兴化的服务集群。
+
+另外，结合上面的应用场景，会需要一个类似时间锁服务的东东。比如，如果redis节点发生故障，可能短时间内有多个监控设施检测到并发起slot转移通知。但是这时候不需要执行很多次，使用任意一次的结果即可。比如：
+
+1. slot[1-128) -> svr1 崩溃
+2. 检测服务器A检测到故障，通知slot[1-128) 转移到 svr2 => Raft消息1
+3. 检测服务器B检测到故障，通知slot[1-128) 转移到 svr3 => Raft消息2
+4. 检测服务器C检测到故障，通知slot[1-128) 转移到 svr2 => Raft消息3
+5. 检测服务器D检测到故障，通知slot[1-128) 转移到 svr4 => Raft消息4
+6. ...
+7. [Raft](https://raft.github.io/)服务器消息1成功Commited
+8. [Raft](https://raft.github.io/)服务器消息2成功Commited
+9. ...
+
+很显然*Raft消息1-Raft消息N*中任何一个都可以完成估值转移，如果这时候能够带一个时间锁，那么短时间的负载均衡或者故障转移通知只会成功一个，就可以避免频繁转移的问题。
 
 
-[Raft](https://raft.github.io/)的实现
-------
+## [Raft](https://raft.github.io/)的实现
+
 [Raft](https://raft.github.io/) 上面列了很多协议的实现的库或者组件，我主要看了下[etcd](https://github.com/coreos/etcd)和[RethinkDB](#https://github.com/rethinkdb/rethinkdb)。
 
 我不喜欢[etcd](https://github.com/coreos/etcd)的http协议的使用方式，不过[RethinkDB](#https://github.com/rethinkdb/rethinkdb)有点太过于庞大了，而且我不喜欢GPL协议。
