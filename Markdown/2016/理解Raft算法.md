@@ -1,41 +1,5 @@
 # 理解Raft算法
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [理解Raft算法](#理解raft算法)
-	- [前言](#前言)
-	- [基本算法设计](#基本算法设计)
-		- [AppendEntries RPC（心跳、消息同步RPC）](#appendentries-rpc心跳消息同步rpc)
-			- [RPC请求:](#rpc请求)
-			- [RPC回复:](#rpc回复)
-			- [接收方判定条件](#接收方判定条件)
-		- [RequestVote RPC（竞选主节点RPC）](#requestvote-rpc竞选主节点rpc)
-			- [RPC请求:](#rpc请求)
-			- [RPC回复:](#rpc回复)
-			- [接收方判定条件](#接收方判定条件)
-		- [服务器逻辑规则](#服务器逻辑规则)
-			- [所有服务器](#所有服务器)
-			- [[从节点](#follower)](#从节点follower)
-			- [[参选节点](#candidate)](#参选节点candidate)
-			- [[主节点](#leader)](#主节点leader)
-	- [未提及的细节和一些思考](#未提及的细节和一些思考)
-		- [主节点切换期间的消息（Log）处理](#主节点切换期间的消息log处理)
-	- [补充内容](#补充内容)
-		- [定时器](#定时器)
-		- [扩容、缩容和故障转移](#扩容缩容和故障转移)
-			- [两阶段提交](#两阶段提交)
-			- [迁移过程中的几个要点](#迁移过程中的几个要点)
-		- [客户端接入](#客户端接入)
-			- [容错和重发](#容错和重发)
-			- [只读订阅](#只读订阅)
-			- [负载均衡和容灾通知(主节点变更)](#负载均衡和容灾通知主节点变更)
-		- [压缩数据](#压缩数据)
-	- [与[Paxos](https://zh.wikipedia.org/zh-cn/Paxos%E7%AE%97%E6%B3%95)的差异](#与paxoshttpszhwikipediaorgzh-cnpaxose7ae97e6b395的差异)
-	- [应用层面的思考](#应用层面的思考)
-	- [[Raft](https://raft.github.io/)的实现](#rafthttpsraftgithubio的实现)
-
-<!-- /TOC -->
-
 ## 前言
 
 最近在分布式系统一致性方面，[Raft](https://raft.github.io/)算法比较火啊。所以就抽时间看了下这个算法。
@@ -80,7 +44,9 @@
 +  <a href="#match_index" name="match_index">**MatchIndex[]**</a>: 已经确认的每个从节点的下一个Log的序号（初始化为0）
 
 RPC消息有两种：
+
 ### AppendEntries RPC（心跳、消息同步RPC）
+
 #### RPC请求:
 
 参数                             | 描述
@@ -107,6 +73,7 @@ Success(我认为这里用返回码更好)     | 如果从节点的内容匹配*
 5. 如果***LeaderCommit***大于本地的[CommitIndex](#commit_index)，[CommitIndex](#commit_index)要设置成***LeaderCommit***和最后一条消息（***Entries***）的[CommitIndex](#commit_index)里的最小值
 
 ### RequestVote RPC（竞选主节点RPC）
+
 #### RPC请求:
 
 参数                             | 描述
@@ -133,15 +100,18 @@ VoteGranted (同样我认为这里用返回码更好) | 如果收到同意票，
 > *PS: 这里我一开始认为是节点的[Term](#term)和[CommitIndex](#commit_index)，导致后面的协商流程一直理解不了。但是这是实际上应该是最后一条[消息](#log)的[Term](#term)和[CommitIndex](#commit_index)。*
 
 ### 服务器逻辑规则
+
 #### 所有服务器
 + 如果[CommitIndex](#commit_index) > [LastApplied](#last_applied)，把所有大于[LastApplied](#last_applied)且未确认的消息转为确认状态，并且更新[LastApplied](#last_applied)到[CommitIndex](#commit_index)
 + 如果RPC的传入的Term大于[CurrentTerm](#term)，更新[CurrentTerm](#term)到传入的Term值，并**强制转为[从节点](#follower)**
 
-#### [从节点](#follower)
+####[从节点](#follower)
+
 + 回应所有来自[主节点](#leader)和[参选节点](#candidate)的RPC消息
 + 如果**竞选超时**时间内没有收到**AppendEntries RPC**或者没有成功的投票（可以是收到**RequestVote RPC**但投反对票），则发起竞选请求（**RequestVote RPC**）
 
-#### [参选节点](#candidate)
+####[参选节点](#candidate)
+
 + 转变为[参选节点](#candidate)时，开始选举过程
 	1. [CurrentTerm](#term) = [CurrentTerm](#term) + 1
 	2. 投票给自己
@@ -151,7 +121,8 @@ VoteGranted (同样我认为这里用返回码更好) | 如果收到同意票，
 + 如果收到来自新[主节点](#leader)的**AppendEntries RPC**，转变为[从节点](#follower)
 + 如果再一次**竞选超时**，重新启动一轮选举，发起竞选请求（**RequestVote RPC**）
 
-#### [主节点](#leader)
+####[主节点](#leader)
+
 + 竞选成功时立刻发送空的心跳包给所有其他节点。并且设置心跳定时器（时间间隔较短），重复这个过程
 + 收到来自客户端的消息以后，添加到本地[消息列表](#log)
 + 如果最后一次[消息](#log)的[CommitIndex](#commit_index)大于等于某个[从节点](#follower)的[NextIndex](#next_index)，发送**AppendEntries RPC**，并附带从[从节点](#follower)的[NextIndex](#next_index)开始的所有消息
