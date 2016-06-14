@@ -7,12 +7,15 @@ boost.context-1.61版本的设计模型变化
 
 顺带提一下这个协程库已经在我们线上服务器版本中使用了。
 
-从最初的boost版本（我忘了从哪个版本开始了）一直到1.60版本，[boost.context][2]的变化都不大，都只是补全一些新的架构和体系结构，还有就是修复一些小细节的BUG，再就是增加了对valgrind的支持。新增的功能也只有[execution_context][3](现在叫execution_context_v1)，这个东西我的[libcopp][1]里其实包含了这个功能，并且本身做得比它要功能丰富，所以没有接入的必要。另外在1.60版本的时候尝试使用Windows里的fiber（当然默认是关闭的），在1.61版本里被移除了。这些细节都不是特别重要，主要还是1.61版本的变化。
+从最初的boost版本（我忘了从哪个版本开始了）一直到1.60版本，[boost.context][2]的变化都不大，都只是补全一些新的架构和体系结构，还有就是修复一些小细节的BUG，再就是增加了对valgrind的支持（之前写过一个[Merge记录](//owent.net/?p=1194)提到过）。新增的功能也只有[execution_context][3](现在叫execution_context_v1)，这个东西我的[libcopp][1]里其实包含了这个功能，并且本身做得比它要功能丰富，所以没有接入的必要。另外在1.60版本的时候尝试使用Windows里的fiber（当然默认是关闭的），在1.61版本里被移除了。这些细节都不是特别重要，主要还是1.61版本的变化。
 
 然而这次变化就比较大了，首先所有的API都变更了，汇编代码里的参数和返回值也都发生了变化，当然语义也不一样了，另外还增加了新的API**ontop_fcontext**。这些变化使得[libcopp][1]的逻辑关系也必须有一些相应的调整，为了理清思路，这些都在后面分析。
 
-API变化
+设计模型变化
 ------
+
+### API变化
+
 先来看看原先的底层API
 
 ```cpp
@@ -134,21 +137,79 @@ transfer_t BOOST_CONTEXT_CALLDECL ontop_fcontext( fcontext_t const to, void * vp
 
 ```
 
-设计模型变化
-------
+### 流程变化
+
+诸如命名空间从boost转移到boost::detail这种废话我就不说了，这也是说作者不再希望用户直接使用这些接口了。然而这挡不住我非要直接用，哈哈。
+
+重要的是首先API参数和返回值变化，对于这些接口变更，boost里并没有文档，也没有什么地方有说明，所以目前我只能通过它的单元测试和sample来评估功能。
+
+首先重要的是多一个**transfer_t**，这个里面的有两个对象，第一个*fctx*是来源的执行上下文，第二个*data*是各种接口传入的自定义的指针(上面接口里的*vp*)。
+来源的上下文指的是从什么位置跳转过来的。无论在回调参数还是各项返回值中都是这个含义。
+
+对于**make_fcontext**这个接口，原先的入口函数是void (* fn)( intptr_t)，参数是透传自定义指针。现在是void (* fn)( transfer_t)，里面包含了来源执行栈的上下文和透传的自定义指针。
+
+对于**jump_fcontext**这个接口，原先需要传入把当前执行上下文保存到哪里，跳转目标的新的上下文，自定义数据和是否复制FPU。
+现在的版本不再需要指定是否需要复制FPU了，同时也去除了自动保存当前上下文的功能，并且改成了跳到新的上下文后，新的上下文可以知道自己是从哪跳转过来的。
+
+简单得说，原来比较像POSIX的[makecontext][5]和[swapcontext][6]，现在做得事情更少了，功能拆分得更细，那么有些功能就得使用者来写。
+
+另外，这次的[boost.context][2]新增了一个比较有意思的接口，**transfer_t ontop_fcontext( fcontext_t const to, void * vp, transfer_t (* fn)( transfer_t) )**。
+这个接口的功能是在跳转目标(*to*指向的上下文)上模拟函数调用，并且返回值作为**jump_fcontext**的返回值，相当于可以给执行上下文接口打hook。举个例子：
+
+```cpp
+
+// Step 1. 当前处于执行上下文-fctx1
+transfer_t jump_res = jump_fcontext(fctx2, NULL);
+
+// ...
+// Step 2. 当前处于执行上下文-fctx2
+// 跳入ontop_callback函数
+ontop_fcontext(fctx1, 0x01, ontop_callback);
+
+transfer_t ontop_callback( transfer_t from) {
+    // 这时候 from.fctx == fctx2, from.data == 0x01
+    // Step 3. 可以改变这些数据
+    from.data = 0x02;
+    return from;
+}
+
+// 这时候返回Step 1的
+transfer_t jump_res = jump_fcontext(fctx2, NULL);
+// Step 4. 这时候，jump_res.fctx == fctx2, from.data == 0x02
+// continue other ...
+
+```
+
+这个功能比较有意思，[*execution_context_v2*][4]里也使用它来完成初始化和跳转后的数据预处理。不过目前[libcopp][1]还没有地方需要用到它，以后有时间再想想这玩意在什么情况下需要用到，然后再加接口。
 
 ### 向前兼容
+
 新的API不再像老的一样，跳转后会自动保存原来的上下文。所以在兼容之前的使用方法的时候，就需要手动来保存一下。[boost.context][2]是使用了一个新的对象来记录调用者信息
+
 ```cpp
 struct data_t {
     activation_record   *   from;
     void                *   data;
 };
 ```
+
 那么*jump_fcontext*和*ontop_fcontext*的*vp*参数都是data_t*，然后每次跳入后保存调用来源的上下文
+
 ```cpp
 // ========== 调用jump_fcontext ==========
-data_t d = { from, vp }; // vp 是外部传入的
+// store current activation record in local variable
+auto from = current_rec.get(); // 这是一个TLS变量记录当前执行环境上下文
+// store `this` in static, thread local pointer
+// `this` will become the active (running) context
+// returned by execution_context::current()
+current_rec = this; // 更新当前执行环境上下文
+// 这一段是对GCC动态栈的支持
+#if defined(BOOST_USE_SEGMENTED_STACKS)
+// adjust segmented stack properties
+__splitstack_getcontext( from->sctx.segments_ctx);
+__splitstack_setcontext( sctx.segments_ctx);
+#endif
+data_t d = { from, vp }; // vp 是外部传入的private data
 // context switch from parent context to `this`-context
 transfer_t t = jump_fcontext( fctx, & d);
 data_t * dp = reinterpret_cast< data_t * >( t.data);
@@ -191,10 +252,16 @@ transfer_t context_ontop( transfer_t t) {
 }
 ```
 
+看上面的代码，基本上向前兼容的方法就是新搞一个data_t数据记录来源的[*execution_context*][3]的信息，透传过去后再把老的上下文保存进度。
+并且这么做之后，由于要有方式获取正在进行的上下文是哪一个，它有个记录当前执行上下文的TLS变量就变成了关键的东西。而这个TLS变量的问题后面会再提到。
+
 ### execution_context_v2
 
-+ 更大规模地使用了C++11的特性，比如noexpect，右值，std::move等等。
-+ 和v1自定义data_t不同，v2的透传类型是**std::tuple<Fn, args_tpl_t>**
+新的boost.context提供了一个新版本的[*execution_context*][4]对象，它其实是针对新的设计模型的一个执行上下文的抽象，并且粒度比以前的更小。所以你可以看到在性能比较的页面里v2版本的性能远高于v1。
+实际上性能高的原因是[execution_context_v1][3]提供了有限的[libcopp][1]中coroutine提供的一部分功能，而[*execution_context_v2*][4]则是把这些功能拆分地力度更小，作为其他模块的组件的时候更灵活。
+如果要使用[*execution_context_v2*][4]的话，一些[execution_context_v1][3]处理的问题还是必须上层框架再处理，所以单纯地比较切换速度意义不大。
+
+另外新的[*execution_context_v2*][4]更大规模地使用了C++11的特性，比如noexpect，右值，转移语义等等，用于提升性能。核心代码如下：
 
 ```cpp
 
@@ -300,7 +367,29 @@ transfer_t context_ontop( transfer_t t) {
 1. pooled_fixedsize_stack，现在[boost.context][2]自己提供了一个用于分配栈空间的内存池。内部使用了侵入式智能指针，反正[libcopp][1]本身能够很容易实现这个，并且benchmark里本身就有使用预定内存池的例子，所以我认为这是非关键的功能。
 2. 很多函数重新整理了一下，增加了noexpect/nothrow等。
 
+libcopp的修订
+------
+这次的merge，使用新的设计模型是必然的，但与此同时，我也会做一些细节的优化和调整。主要是下面几大块：
+
+1. ***优化*** 原来使用spin lock来处理多线程保护，还是抽象出跨平台且比较简单的原子操作类吧。好多时候想用但是因为麻烦直接用了c++11的atomic，但是这货gcc 4.4里没有。
+2. ***更新*** 接入新API，类似[execution_context_v1][3]的方式定义一个新的**POD**类型作为透传数据(必须是POD因为不会执行析构函数的)，跳转后处理保存来源的执行位置
+3. ***更新*** 接入新API的话，跳转来源只能靠*this_coroutine*提供了。原先是对多线程且不支持TLS的环境不能使用*this_coroutine*，现在基础功能依赖它的话就必须保证其正确。那么计划是VC的话还是必须使用高版本（反正有社区版免费），GCC/Clang之流使用pthread处理TLS吧。
+4. ***优化*** *coroutine*增加private data，然后*this_task*可以用*this_coroutine*关联，不需要两个TLS变量了，这是之前设计的一处小失误。这样*task*的多线程重入也可以用*coroutine*的。
+5. ***更新*** caller应该要变为每次入口函数后初始化和不是来自yield的jump_to后更新。基本上caller只需要记录fcontext（支持GCC动态栈的情况下还需要多复制一个动态执行栈的数据），作用也只有执行完成后跳回。如果不是调用yield导致返回的，则是外部主动调用resume，所以结束时也需要返回到主动调用的地方。
+6. ***更新*** start内的jump_to只能通过this_XXX来获取来源协程，yield内的jump_to的来源就是this。每次jump_to返回后都要更新来源协程的callee
+7. ***更新*** this_XXX功能应该是入口函数处设置和jump_to执行返回后刷新（不能由外层记录old，因为可能发生变化）。起新的协程和yield都会走jump_to，同样start内得设为jump_to前的this_XXX，而yield的直接设为this
+8. ***优化*** 接入cmake的WriteCompilerDetectionHeader并和[atframe_utils][8]保持一致，尽量加noexpect
+9. ***优化*** 整理一下CI配置，同步[libatbus][7]的CI配置
+
+预计重构完成后性能不会有太大的改变，甚至因为更多地使用原子操作，可能导致性能还会变低一些。不过毕竟实际运用中并不需要经常做协程切换操作，而且逻辑的复杂度源超协程切换，所以关系不大。
+但是重构完后使用者更不容易出现错误，并且可以支持**协程A跳转到协程B再跳转到协程A**这种循环跳转，还是值得的。具体由多大变化，还是等重构完后看测试结果吧。
+
+
 [1]: https://github.com/owt5008137/libcopp
 [2]: http://www.boost.org/doc/libs/1_61_0/libs/context/doc/html/index.html
 [3]: http://www.boost.org/doc/libs/1_61_0/libs/context/doc/html/context/ecv1.html
 [4]: http://www.boost.org/doc/libs/1_61_0/libs/context/doc/html/context/ecv2.html
+[5]: http://linux.die.net/man/3/makecontext
+[6]: http://linux.die.net/man/3/swapcontext
+[7]: https://github.com/atframework/libatbus
+[8]: https://github.com/atframework/atframe_utils
