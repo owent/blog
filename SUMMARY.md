@@ -26,3 +26,5 @@
     * [接入letsencrypt和全面启用HTTP2](Markdown/2016/接入letsencrypt和全面启用HTTP2.md)
     * [boost.context-1.61版本的设计模型变化](Markdown/2016/boost.context-1.61版本的设计模型变化.md)
     * [pbc的一个陈年老BUG](Markdown/2016/pbc的一个陈年老BUG.md)
+    * [Android和IOS的TLS问题](Markdown/2016/Android和IOS的TLS问题.md)
+    * [对atbus的小数据包的优化](Markdown/2016/对atbus的小数据包的优化.md)
