@@ -28,3 +28,4 @@
     * [pbc的一个陈年老BUG](Markdown/2016/pbc的一个陈年老BUG.md)
     * [Android和IOS的TLS问题](Markdown/2016/Android和IOS的TLS问题.md)
     * [对atbus的小数据包的优化](Markdown/2016/对atbus的小数据包的优化.md)
+    * [游戏服务器的不停服更新](Markdown/2016/游戏服务器的不停服更新.md)
