@@ -65,7 +65,7 @@ void func1(int a) {
 
 这些导致少量的内存泄露都还是其次，最重要的问题是，在析构的时候，dlclose会进行析构的内存回收，主框架也会。这就导致了回收了两遍，并且回收不完全。
 
-我们这里检测到是在**google::protobuf::FileDescriptorTables**析构时hash table的析构的时候内存错误。而且由于现在的内存分配器都有容错，意味着**这个崩溃不是必现**的。使用debug版本的jemalloc可以100%复现这个问题，而使用release版的jemalloc或者ptmalloc或者tcmalloc的时候都不能集市发现。valgrind的检测信息大致如下：
+我们这里检测到是在**google::protobuf::FileDescriptorTables**析构时hash table的析构的时候内存错误。而且由于现在的内存分配器都有容错，意味着**这个崩溃不是必现**的。使用debug版本的jemalloc可以100%复现这个问题，而使用release版的jemalloc或者ptmalloc或者tcmalloc的时候都不能及时发现。valgrind的检测信息大致如下：
 
 ```
 ==29910== Invalid read of size 8
