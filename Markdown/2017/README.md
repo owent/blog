@@ -7,3 +7,4 @@ All articles posted in 2017
 * [对象路由系统设计](对象路由系统设计.md)
 * [atapp的c binding和c#适配](atapp的c binding和c#适配.md)
 * [开源项目得一些小维护](开源项目得一些小维护.md)
+* [用cmake交叉编译到iOS和Android](用cmake交叉编译到iOS和Android.md)
