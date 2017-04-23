@@ -8,3 +8,4 @@ All articles posted in 2017
 * [atapp的c binding和c#适配](atapp的c binding和c#适配.md)
 * [开源项目得一些小维护](开源项目得一些小维护.md)
 * [用cmake交叉编译到iOS和Android](用cmake交叉编译到iOS和Android.md)
+* [libatbus的几个藏得很深的BUG](libatbus的几个藏得很深的BUG.md)
