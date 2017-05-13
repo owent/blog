@@ -3,6 +3,10 @@ OWenT.Articles
 
 All contents are also published on https://owent.net
 
+About Me
+------
+See [About](About.md)
+
 Directories
 ------
 - **Draft**: drafts in all formats
