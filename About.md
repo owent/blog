@@ -103,11 +103,11 @@
 #### 技术栈/关键字
 
 ```
-bash,linux,cmake,c/c++(11/14/17),lua,php,python,javascript,typescript,c#,html,java,less,php,sql
-jemalloc/ptmalloc/tcmalloc,libuv/libevent,boost,bootstrap,jquery,v8,.net,angularjs,vue.js,nodejs,zend framework,websocket,qt
-redis,msgpack,protobuf,flatbuffers,ci,jenkins,travis,appveyor,unity,cocos2d-x,cap’n proto,gRPC
-计算机算法,分布式系统,游戏服务器架构设计和开发,linux环境编程,操作系统,编译原理,设计模式,vscode插件开发,wordpress插件及主题开发
-svn,git,p4
+编程语言: bash,cmake,c/c++(11/14/17),lua,php,python,javascript,typescript,c#,html,java,less,php,sql,markdown
+库: jemalloc/ptmalloc/tcmalloc,libuv/libevent,boost,bootstrap,jquery,v8,.net,angularjs,vue.js,nodejs,zend framework,websocket,qt
+应用和框架: redis,msgpack,protobuf,flatbuffers,ci,jenkins,travis,appveyor,unity,cocos2d-x,cap’n proto,gRPC
+主题: 计算机算法,分布式系统,游戏服务器架构设计和开发,linux环境编程,操作系统,编译原理,设计模式,vscode插件开发,wordpress插件及主题开发
+工具: svn,git,p4
 ```
 
  
