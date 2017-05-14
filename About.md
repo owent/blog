@@ -18,10 +18,10 @@
 + <保密> - 手游 - MMORPG
 > * 服务器框架维护和优化（包含负载均衡、故障转移等，主要是[atframework](https://github.com/atframework)）
 > * 游戏服务器架构设计和开发，系统方案设计和部分实现
-> > - 跨平台转表工具及加载（包含linux、macOS、Windows、Android和iOS，c++、lua和c#（unity+mono,.net core））
-> > - 自研协程系统和相应的调度器和RPC系统及协程栈池
-> > - 自研redis cluster接入方案
-> > - 各项服务器系统接入的Unity 3D适配
+>   + 跨平台转表工具及加载（包含linux、macOS、Windows、Android和iOS，c++、lua和c#（unity+mono,.net core））
+>   + 自研协程系统和相应的调度器和RPC系统及协程栈池
+>   + 自研redis cluster接入方案
+>   + 各项服务器系统接入的Unity 3D适配
 > * 内部devops工具、发布工具的开发和维护（包含自研开发发布工具、jenkins等）
 > * 客户端部分底层模块的适配和优化
 > * 服务器部分逻辑和性能分析及优化
@@ -33,9 +33,9 @@
 + 战将天下 - 手游 - 卡牌
 > * 服务器框架维护和优化（包含负载均衡、故障转移等）
 > * 游戏服务器架构设计和开发，系统方案设计和部分实现（包含不停服更新、加密和反作弊、断线重连、（灰度）多平台更新策略等）
-> > - 跨平台转表工具及加载（包含linux、macOS、Windows、Android和iOS，lua和c++）
-> > - 自研协程系统和响应的调度器和RPC系统
-> > - 自研redis cluster接入方案
+>   - 跨平台转表工具及加载（包含linux、macOS、Windows、Android和iOS，lua和c++）
+>   - 自研协程系统和响应的调度器和RPC系统
+>   - 自研redis cluster接入方案
 > * 内部devops工具、发布工具和运维系统的开发和维护（包含自研开发发布工具、jenkins、仓库管理、运维系统等）
 > * 客户端底层模块的设计、性能分析和优化（如：自适应LRU内存缓存系统、资源加密方案、基于bsdiff的查分更新等）
 > * 服务器部分逻辑和性能分析及优化
