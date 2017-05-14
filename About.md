@@ -129,7 +129,7 @@
 库: jemalloc/ptmalloc/tcmalloc,libuv/libevent,boost,bootstrap,jquery,v8,.net,angularjs,vue.js,nodejs,zend framework,websocket,qt
 应用和框架: redis,msgpack,protobuf,flatbuffers,ci,jenkins,travis,appveyor,unity,cocos2d-x,cap’n proto,gRPC
 主题: 计算机算法,分布式系统,游戏服务器架构设计和开发,linux环境编程,操作系统,编译原理,设计模式,vscode插件开发,wordpress插件及主题开发
-工具: svn,git,p4
+工具: svn,git,p4,pandoc,graphviz,valgrind,gdb/lldb,perf,gperf,binutils/readelf/tcpdump等,mingw,msys,wsl,qemu,kvm,docker
 ```
 
  
