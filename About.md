@@ -22,7 +22,7 @@
   >     * 系统支持 linux、macOS、Windows、Android、iOS
   >     * 语言支持: c++、lua和c\#\(unity+mono,.net core, .net framework\)
   >   * 自研协程系统和相应的调度器和RPC系统及协程栈池
-  >   * 自研redis cluster接入方案
+  >   * 自研redis cluster高可用接入方案
   >   * 各项服务器系统接入的Unity 3D适配
   > * 内部devops工具、发布工具的开发和维护（包含自研开发发布工具、jenkins等）
   > * 客户端部分底层模块的适配和优化
@@ -40,7 +40,7 @@
   >     * 系统支持: linux、macOS、Windows、Android和iOS
   >     * 语言支持: lua和c++
   >   * 自研协程系统和响应的调度器和RPC系统
-  >   * 自研redis cluster接入方案
+  >   * 自研redis cluster高可用接入方案
   > * 内部devops工具、发布工具和运维系统的开发和维护（包含自研开发发布工具、jenkins、仓库管理、运维系统等）
   > * 客户端底层模块的设计、性能分析和优化（如：自适应LRU内存缓存系统、资源加密方案、基于bsdiff的查分更新等）
   > * 服务器部分逻辑和性能分析及优化
