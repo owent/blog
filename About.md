@@ -93,7 +93,8 @@
   > * [libatapp - 服务器应用框架](https://github.com/atframework/libatapp)
   > * [atsf4g-co - 完整游戏服务器解决方案](https://github.com/atframework/atsf4g-co)
   >   * 包含服务器代理进程atproxy（使用etcd实现去中心化）
-  >   * 包含客户端网关层进程atgateway（包含自有协议、动态密钥加密、重连管理、网络优化、资源控制、纯C客户端API）
+  >   * 包含客户端网关层进程atgateway
+  >     * 自有协议、动态密钥加密、重连管理、网络优化、资源控制、纯C客户端API
   >   * 示例的echosvr、loginsvr和gamesvr
   >   * 示例的协程RPC和任务管理
   > * [AtgwInnerCli-CSharp - atgateway的C\#适配](https://github.com/atframework/AtgwInnerCli-CSharp)（纯C客户端API的包装，可用于Unity 3D）
