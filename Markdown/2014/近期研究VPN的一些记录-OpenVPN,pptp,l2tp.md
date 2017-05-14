@@ -6,7 +6,7 @@
 
 其实在有VPS的情况下，还有另外一种替代方案。那就是在路由器上直接ssh隧道+sock5代理+使用[autossh](http://www.harding.motd.ca/autossh/)自动重连+使用[polipo](http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/)作HTTP代理+[PAC文件](https://calomel.org/proxy_auto_config.html)自动代理切换。实现，最终我在家里就是这么搞得，而且这样对网络结构没有其他影响。
 
-[我的PAC文件](https://github.com/owt5008137/OWenT.Articles/blob/master/Resource/2014/proxy.pac)
+[我的PAC文件](https://github.com/owent/blog/blob/master/Resource/2014/proxy.pac)
 
 ----------
 
