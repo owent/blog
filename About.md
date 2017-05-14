@@ -1,7 +1,7 @@
 | 欧文韬                     | TEL. 18601690140                         |
 | ----------------------- | ---------------------------------------- |
-| 性别： 男                   | E-Mail: [owt5008137@live.com](mailto:owt5008137@live.com)、[admin@owent.net](mailto:admin@owent.net) |
-| Blog: https://owent.net |                                          |
+| 性别： 男                 | E-Mail(主): [admin@owent.net](mailto:admin@owent.net) |
+| Blog: https://owent.net | E-Mail(备): [owt5008137@live.com](mailto:owt5008137@live.com) |
 
 #### 工作学习经历
 
