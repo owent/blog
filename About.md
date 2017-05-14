@@ -42,7 +42,7 @@
   >   * 自研协程系统和响应的调度器和RPC系统
   >   * 自研redis cluster高可用接入方案
   > * 内部devops工具、发布工具和运维系统的开发和维护（包含自研开发发布工具、jenkins、仓库管理、运维系统等）
-  > * 客户端底层模块的设计、性能分析和优化（如：自适应LRU内存缓存系统、资源加密方案、基于bsdiff的查分更新等）
+  > * 客户端底层模块的设计、性能分析和优化（如：自适应LRU内存缓存系统、资源加密方案、基于bsdiff的差分更新等）
   > * 服务器部分逻辑和性能分析及优化
   > * 程序组项目进度管理，质量控制和团队管理
   > * 参与产品方向性讨论、系统设计和功能设计
@@ -78,15 +78,18 @@
 
   > xresloader – [https://github.com/xresloader](https://github.com/xresloader)
   >
-  > 1. 转表核心引擎: [xresloader – https://github.com/xresloader/xresloader](https://github.com/xresloader/xresloader)
-  > 2. 批量转表协定: [xresconv-conf – https://github.com/xresloader/xresconv-conf](https://github.com/xresloader/xresconv-conf)
-  > 3. 跨平台批量转表CLI工具: [xresconv-cli – https://github.com/xresloader/xresconv-cli](https://github.com/xresloader/xresconv-cli)
-  > 4. 跨平台批量转表GUI工具: [xresconv-gui – https://github.com/xresloader/xresconv-gui](https://github.com/xresloader/xresconv-gui)
+  > 1. 转表核心引擎: [xresloader](https://github.com/xresloader/xresloader)
+  > 2. 批量转表规范: [xresconv-conf](https://github.com/xresloader/xresconv-conf)
+  > 3. 跨平台批量转表CLI工具: [xresconv-cli](https://github.com/xresloader/xresconv-cli)
+  > 4. 跨平台批量转表GUI工具: [xresconv-gui](https://github.com/xresloader/xresconv-gui)
 
 * 高性能、全异步、跨平台、去中心化游戏服务器框架\([atframework](https://atframe.work/)\): [https://github.com/atframework](https://github.com/atframework)
 
   > * [Utility](https://github.com/atframework/atframe_utils)
-  > * [libatbus - 高性能进程间通信和管理](https://github.com/atframework/libatbus) \(单进程: TCP通道2800+K/QPS和600+MB/s吞吐量,共享内存通道5000+K/QPS和1.5+GB/s吞吐量\)
+  > * [libatbus - 高性能进程间通信和管理](https://github.com/atframework/libatbus) 
+  >   * 单进程单线程+TCP通道: 2800+K/QPS和600+MB/s吞吐量
+  >   * 单进程单线程+共享内存通道: 5000+K/QPS和1.5+GB/s吞吐量
+  >   * 无锁队列支持多（进程/线程）写单（线程）读
   > * [libatapp - 服务器应用框架](https://github.com/atframework/libatapp)
   > * [atsf4g-co - 完整游戏服务器解决方案](https://github.com/atframework/atsf4g-co)
   >   * 包含服务器代理进程atproxy（使用etcd实现去中心化）
