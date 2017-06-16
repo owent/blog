@@ -1,3 +1,8 @@
+---
+title: About
+id: 96
+---
+
 | 欧文韬 | TEL. 18601690140 |
 | --- | --- |
 | 性别： 男 | E-Mail\(主\): [admin@owent.net](mailto:admin@owent.net) |
@@ -142,6 +147,3 @@
 主题: 计算机算法,分布式系统,游戏服务器架构设计和开发,linux环境编程,操作系统,编译原理,设计模式,vscode插件开发,wordpress插件及主题开发
 工具: svn,git,p4,pandoc,graphviz,valgrind,gdb/lldb,perf,gperf,binutils/readelf/tcpdump等,mingw,msys,wsl,qemu,kvm,docker
 ```
-
-
-

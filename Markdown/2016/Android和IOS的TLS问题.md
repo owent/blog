@@ -1,3 +1,19 @@
+---
+title: Android和IOS的TLS问题
+tags:
+  - c++0x/11
+  - c++11
+  - g++
+  - gcc
+  - 多线程
+id: 1285
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2016-07-09 14:15:14
+---
+
 Android和IOS的TLS问题
 ======
 

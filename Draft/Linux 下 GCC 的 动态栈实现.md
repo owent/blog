@@ -1,6 +1,6 @@
 Linux 下 GCC 的 动态栈实现
 ============
-<!--[TOC]-->
+<!--<!-- toc -->-->
 
 ```cpp
 enum __splitstack_context_offsets

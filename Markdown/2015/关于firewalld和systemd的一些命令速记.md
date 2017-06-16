@@ -1,73 +1,73 @@
-¹ØÓÚfirewalldºÍsystemdµÄÒ»Ğ©ÃüÁîËÙ¼Ç
+å…³äºfirewalldå’Œsystemdçš„ä¸€äº›å‘½ä»¤é€Ÿè®°
 ======
 
-[TOC]
+<!-- toc -->
 
-Ç°ÑÔ
+å‰è¨€
 ------
 
-CentOS 7 ÒÑ¾­ÓÃfirewalldÌæ»»µôÁËiptables²¢ÓÃsystemdÀ´¹ÜÀíÆô¶¯·şÎñ£¨Ö®Ç°ÊÇchkconfig£©¡£¶øÇÒÏÂÒ»¸öUbuntuµÄ³¤ÆÚÖ§³Ö°æÒ²ÒªÕâÃ´¸ÉÁË¡£
+CentOS 7 å·²ç»ç”¨firewalldæ›¿æ¢æ‰äº†iptableså¹¶ç”¨systemdæ¥ç®¡ç†å¯åŠ¨æœåŠ¡ï¼ˆä¹‹å‰æ˜¯chkconfigï¼‰ã€‚è€Œä¸”ä¸‹ä¸€ä¸ªUbuntuçš„é•¿æœŸæ”¯æŒç‰ˆä¹Ÿè¦è¿™ä¹ˆå¹²äº†ã€‚
 
-ÕâÁ½¸ö¹¤¾ßÔÚ²Ù×÷ÉÏºÍÖ®Ç°µÄÏµÍ³ÓĞºÜ¶àµÄ±ä»¯£¬ËùÒÔ¼¯ÖĞ¼ÇÂ¼Ò»ÏÂ³£ÓÃµÄÃüÁî£¬ÒÔÃâÃ¿´Î¶¼Òª¿¿ËÑË÷ÒıÇæ¡£
+è¿™ä¸¤ä¸ªå·¥å…·åœ¨æ“ä½œä¸Šå’Œä¹‹å‰çš„ç³»ç»Ÿæœ‰å¾ˆå¤šçš„å˜åŒ–ï¼Œæ‰€ä»¥é›†ä¸­è®°å½•ä¸€ä¸‹å¸¸ç”¨çš„å‘½ä»¤ï¼Œä»¥å…æ¯æ¬¡éƒ½è¦é æœç´¢å¼•æ“ã€‚
 
 firewalld
 ------
 
-¹ØÓÚfirewalld£ºhttp://fedoraproject.org/wiki/FirewallD/zh-cn
+å…³äºfirewalldï¼šhttp://fedoraproject.org/wiki/FirewallD/zh-cn
 
-Í¼ĞÎ»¯ÅäÖÃ¹¤¾ß£º firewall-config
+å›¾å½¢åŒ–é…ç½®å·¥å…·ï¼š firewall-config
 
-ÃüÁîĞĞ¹¤¾ß£ºfirewall-cmd
+å‘½ä»¤è¡Œå·¥å…·ï¼šfirewall-cmd
 
 
-Ä¬ÈÏÅäÖÃÎ»ÓÚ£º /usr/lib/firewalld
+é»˜è®¤é…ç½®ä½äºï¼š /usr/lib/firewalld
 
-ÓÃ»§ÅäÖÃÎ»ÓÚ£º /etc/firewalld
+ç”¨æˆ·é…ç½®ä½äºï¼š /etc/firewalld
 
-### Ìí¼Ó·şÎñ
-ÔÚ /etc/firewalld/services ´´½¨ [·şÎñÃû³Æ].xml
-¸ñÊ½ÈçÏÂ:
+### æ·»åŠ æœåŠ¡
+åœ¨ /etc/firewalld/services åˆ›å»º [æœåŠ¡åç§°].xml
+æ ¼å¼å¦‚ä¸‹:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <service>
-  <short>·şÎñÃû³Æ</short>
-  <description>·şÎñÃû³Æ server port whitelist</description>
-  <port protocol="Ğ­Òé" port="¶Ë¿Ú"/>
+  <short>æœåŠ¡åç§°</short>
+  <description>æœåŠ¡åç§° server port whitelist</description>
+  <port protocol="åè®®" port="ç«¯å£"/>
   <port protocol="tcp" port="8001"/>
 </service>
 ```
 
-### Ìí¼ÓÇøÓò¹æÔò
+### æ·»åŠ åŒºåŸŸè§„åˆ™
 
-ºÍÌí¼Ó·şÎñÀàËÆ£¬¿ÉÒÔ´Ó/usr/lib/firewalld/zones¿½±´µ½/etc/firewalld/zonesÈ»ºó¸Ä¡£
+å’Œæ·»åŠ æœåŠ¡ç±»ä¼¼ï¼Œå¯ä»¥ä»/usr/lib/firewalld/zonesæ‹·è´åˆ°/etc/firewalld/zonesç„¶åæ”¹ã€‚
 
-Ö÷ÒªÁ÷³ÌÊÇ¿ØÖÆÄ³Ò»¸öÇøÓò¿ªÆôÄÄĞ©·şÎñ»òÕß¶Ë¿Ú
+ä¸»è¦æµç¨‹æ˜¯æ§åˆ¶æŸä¸€ä¸ªåŒºåŸŸå¼€å¯å“ªäº›æœåŠ¡æˆ–è€…ç«¯å£
 
-### ³£ÓÃÃüÁî
+### å¸¸ç”¨å‘½ä»¤
 ```bash
-# ÖØÔØ
+# é‡è½½
 firewall-cmd --reload
-# ×´Ì¬
+# çŠ¶æ€
 firewall-cmd --state
 
-# Ìí¼Ó/ÒÆ³ı/²éÑ¯·şÎñ
+# æ·»åŠ /ç§»é™¤/æŸ¥è¯¢æœåŠ¡
 firewall-cmd [--permanent] [--zone=<zone>] --add-service=<service> [--timeout=<seconds>]
 firewall-cmd [--zone=<zone>] --remove-service=<service>
 firewall-cmd [--zone=<zone>] --query-service=<service>
 
-# Ìí¼Ó/ÒÆ³ı/²éÑ¯¶Ë¿Ú
+# æ·»åŠ /ç§»é™¤/æŸ¥è¯¢ç«¯å£
 firewall-cmd [--zone=<zone>] --add-port=<port>[-<port>]/<protocol> [--timeout=<seconds>]
 firewall-cmd [--zone=<zone>] --remove-port=<port>[-<port>]/<protocol>
 firewall-cmd [--zone=<zone>] --query-port=<port>[-<port>]/<protocol>
 
-# Ìí¼Ó/ÒÆ³ı/²éÑ¯¶Ë¿Ú×ª·¢
+# æ·»åŠ /ç§»é™¤/æŸ¥è¯¢ç«¯å£è½¬å‘
 firewall-cmd [--zone=<zone>] --add-forward-port=port=<port>[-<port>]:proto=<protocol> { :toport=<port>[-<port>] | :toaddr=<address> | :toport=<port>[-<port>]:toaddr=<address> }
 firewall-cmd [--zone=<zone>] --remove-forward-port=port=<port>[-<port>]:proto=<protocol> { :toport=<port>[-<port>] | :toaddr=<address> | :toport=<port>[-<port>]:toaddr=<address> }
 firewall-cmd [--zone=<zone>] --query-forward-port=port=<port>[-<port>]:proto=<protocol> { :toport=<port>[-<port>] | :toaddr=<address> | :toport=<port>[-<port>]:toaddr=<address> }
-# Àı: ½«ÇøÓòhomeµÄssh×ª·¢µ½127.0.0.2
+# ä¾‹: å°†åŒºåŸŸhomeçš„sshè½¬å‘åˆ°127.0.0.2
 firewall-cmd --zone=home --add-forward-port=port=22:proto=tcp:toaddr=127.0.0.2
 
-# Ö±½Ó·ÃÎÊ£¨ÀàËÆiptableµÄ²Ù×÷£©
+# ç›´æ¥è®¿é—®ï¼ˆç±»ä¼¼iptableçš„æ“ä½œï¼‰
 firewall-cmd [--permanent] --direct --get-all-chains
 firewall-cmd [--permanent] --direct --get-chains { ipv4 | ipv6 | eb } table
 firewall-cmd [--permanent] --direct --add-chain { ipv4 | ipv6 | eb } table chain
@@ -86,45 +86,45 @@ firewall-cmd [--permanent] --direct --add-passthroughs{ ipv4 | ipv6 | eb } args
 firewall-cmd [--permanent] --direct --remove-passthroughs{ ipv4 | ipv6 | eb } args
 firewall-cmd [--permanent] --direct --query-passthroughs{ ipv4 | ipv6 | eb } args
 
-# Ö±½Ó·ÃÎÊÀı×Ó
+# ç›´æ¥è®¿é—®ä¾‹å­
 firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 80 -j ACCEPT
 
-# »ñÈ¡ËùÓĞ¿ÉÓÃÅäÖÃ¼¯
+# è·å–æ‰€æœ‰å¯ç”¨é…ç½®é›†
 firewall-cmd --get-zones
 firewall-cmd --list-all-zones
 
-# »ñÈ¡ËùÓĞ¿ÉÓÃ·şÎñ
+# è·å–æ‰€æœ‰å¯ç”¨æœåŠ¡
 firewall-cmd --get-services
 firewall-cmd --get-icmptypes
 
-# »ñÈ¡ÒÑ¾­ÆôÓÃµÄ·şÎñ
+# è·å–å·²ç»å¯ç”¨çš„æœåŠ¡
 firewall-cmd [--zone=<zone>] --list-services
 ```
 
 systemd
 ------
 
-¹ØÓÚsystemd£º https://wiki.archlinux.org/index.php/Systemd_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29
+å…³äºsystemdï¼š https://wiki.archlinux.org/index.php/Systemd_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29
 
-ÏµÍ³ÅäÖÃÎ»ÖÃ£º/usr/lib/systemd/system/
+ç³»ç»Ÿé…ç½®ä½ç½®ï¼š/usr/lib/systemd/system/
 
-ÓÃ»§ÅäÖÃÎ»ÖÃ£º/etc/systemd/system/
+ç”¨æˆ·é…ç½®ä½ç½®ï¼š/etc/systemd/system/
 
-ÆäÊµsystemdµÄenable²Ù×÷¾ÍÊÇ°ÑÏµÍ³ÅäÖÃÈíÁ´½Óµ½ÓÃ»§ÅäÖÃ
+å…¶å®systemdçš„enableæ“ä½œå°±æ˜¯æŠŠç³»ç»Ÿé…ç½®è½¯é“¾æ¥åˆ°ç”¨æˆ·é…ç½®
 
-### Ìí¼Ó·şÎñ
+### æ·»åŠ æœåŠ¡
 
-¾ßÌåÎÄµµ¿ÉÒÔ *man 5 systemd.unit* ºÍ *man 5 systemd.service*
+å…·ä½“æ–‡æ¡£å¯ä»¥ *man 5 systemd.unit* å’Œ *man 5 systemd.service*
 
-Ö±½ÓÔÚ /usr/lib/systemd/system»òÕß/usr/lib/systemd/userÀïÌí¼Ó <µ¥Ôª>.serviceÎÄ¼ş
+ç›´æ¥åœ¨ /usr/lib/systemd/systemæˆ–è€…/usr/lib/systemd/useré‡Œæ·»åŠ  <å•å…ƒ>.serviceæ–‡ä»¶
 
 ```bash
-systemctl enable <µ¥Ôª>.service
+systemctl enable <å•å…ƒ>.service
 ```
-È»ºóÖ´ĞĞÉÏÃæµÄÃüÁî¼´¿É
+ç„¶åæ‰§è¡Œä¸Šé¢çš„å‘½ä»¤å³å¯
 
 
-ÎÄ¼şÄÚÈİÊ¾Àı£º
+æ–‡ä»¶å†…å®¹ç¤ºä¾‹ï¼š
 ```
 [Unit]
 Description=nginx - high performance web server
@@ -144,69 +144,69 @@ PrivateTmp=true
 WantedBy=multi-user.target
 ```
 
-### Æô¶¯¼¶±ğ
-SysV Æô¶¯¼¶±ğ      | Systemd Ä¿±ê      | ×¢ÊÍ
+### å¯åŠ¨çº§åˆ«
+SysV å¯åŠ¨çº§åˆ«      | Systemd ç›®æ ‡      | æ³¨é‡Š
 ------------------|------------------|-------
-0                 | runlevel0.target, poweroff.target | ÖĞ¶ÏÏµÍ³£¨halt£©
-1, s, single      | runlevel1.target, rescue.target | µ¥ÓÃ»§Ä£Ê½
-2, 4              | runlevel2.target, runlevel4.target, multi-user.target | ÓÃ»§×Ô¶¨ÒåÆô¶¯¼¶±ğ£¬Í¨³£Ê¶±ğÎª¼¶±ğ3¡£
-3                 | runlevel3.target, multi-user.target | ¶àÓÃ»§£¬ÎŞÍ¼ĞÎ½çÃæ¡£ÓÃ»§¿ÉÒÔÍ¨¹ıÖÕ¶Ë»òÍøÂçµÇÂ¼¡£
-5                 | runlevel5.target, graphical.target | ¶àÓÃ»§£¬Í¼ĞÎ½çÃæ¡£¼Ì³Ğ¼¶±ğ3µÄ·şÎñ£¬²¢Æô¶¯Í¼ĞÎ½çÃæ·şÎñ¡£
-6                 | runlevel6.target, reboot.target | ÖØÆô
-emergency         | emergency.target | ¼±¾ÈÄ£Ê½£¨Emergency shell£© 
+0                 | runlevel0.target, poweroff.target | ä¸­æ–­ç³»ç»Ÿï¼ˆhaltï¼‰
+1, s, single      | runlevel1.target, rescue.target | å•ç”¨æˆ·æ¨¡å¼
+2, 4              | runlevel2.target, runlevel4.target, multi-user.target | ç”¨æˆ·è‡ªå®šä¹‰å¯åŠ¨çº§åˆ«ï¼Œé€šå¸¸è¯†åˆ«ä¸ºçº§åˆ«3ã€‚
+3                 | runlevel3.target, multi-user.target | å¤šç”¨æˆ·ï¼Œæ— å›¾å½¢ç•Œé¢ã€‚ç”¨æˆ·å¯ä»¥é€šè¿‡ç»ˆç«¯æˆ–ç½‘ç»œç™»å½•ã€‚
+5                 | runlevel5.target, graphical.target | å¤šç”¨æˆ·ï¼Œå›¾å½¢ç•Œé¢ã€‚ç»§æ‰¿çº§åˆ«3çš„æœåŠ¡ï¼Œå¹¶å¯åŠ¨å›¾å½¢ç•Œé¢æœåŠ¡ã€‚
+6                 | runlevel6.target, reboot.target | é‡å¯
+emergency         | emergency.target | æ€¥æ•‘æ¨¡å¼ï¼ˆEmergency shellï¼‰ 
 
-### ³£ÓÃÃüÁî
+### å¸¸ç”¨å‘½ä»¤
 
 ```bash
-# systemd ÖØÔØÅäÖÃ
+# systemd é‡è½½é…ç½®
 systemctl daemon-reload
-systemctl restart <µ¥Ôª>
+systemctl restart <å•å…ƒ>
 
-# ²é¿´Æô¶¯ÈÕÖ¾
+# æŸ¥çœ‹å¯åŠ¨æ—¥å¿—
 journalctl -b
 
-# ¿ªÆô/¹Ø±Õ/²éÑ¯×Ô×Ô¶¯·şÎñ
-systemctl enable/disable/enable <µ¥Ôª>
+# å¼€å¯/å…³é—­/æŸ¥è¯¢è‡ªè‡ªåŠ¨æœåŠ¡
+systemctl enable/disable/enable <å•å…ƒ>
 
-# Æô¶¯¡¢ÖØÆô¡¢ÖØÔØ¡¢¹Ø±Õ·şÎñ
-systemctl start/restart/reload/stop <µ¥Ôª>
+# å¯åŠ¨ã€é‡å¯ã€é‡è½½ã€å…³é—­æœåŠ¡
+systemctl start/restart/reload/stop <å•å…ƒ>
 
-# ÁĞ¾ÙËùÓĞ·şÎñµ¥Ôª
+# åˆ—ä¸¾æ‰€æœ‰æœåŠ¡å•å…ƒ
 systemctl list-units
 
-# ¹Ø»ú
+# å…³æœº
 systemctl poweroff
 
-# ÖØÆô
+# é‡å¯
 systemctl reboot
 ```
 
-Ë³´ø¼ÇÒ»ÏÂÔõÃ´¿ªÆôcoredump
+é¡ºå¸¦è®°ä¸€ä¸‹æ€ä¹ˆå¼€å¯coredump
 ------
 
 ```bash
 # 
 COREDUMP_DIR=/home/coredump
 
-# ÅäÖÃ×ÊÔ´ÏŞÖÆ 
+# é…ç½®èµ„æºé™åˆ¶ 
 echo '#!/bin/sh
 
 ulimit -S -c unlimited > /dev/null 2>&1
 ' > /etc/profile.d/coredump.sh;
 
-# ÅäÖÃÎÄ¼şÄ£Ê½ 
+# é…ç½®æ–‡ä»¶æ¨¡å¼ 
 echo "kernel.core_pattern = $COREDUMP_DIR/%e.%t.%p.coredump" > /etc/sysctl.d/99-sysctl.conf;
 
 mkdir -p $COREDUMP_DIR;
 chmod 666 $COREDUMP_DIR;
 
-# ÖØÔØÅäÖÃ 
+# é‡è½½é…ç½® 
 sysctl -p;
 
-# ¼ì²éÄ£Ê½ 
+# æ£€æŸ¥æ¨¡å¼ 
 cat /proc/sys/kernel/core_pattern ;
 
-# ×ÊÁÏ 
+# èµ„æ–™ 
 # http://man7.org/linux/man-pages/man5/core.5.html 
 # man 5 core 
 ```

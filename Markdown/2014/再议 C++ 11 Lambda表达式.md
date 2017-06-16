@@ -3,7 +3,7 @@
 
 目录
 ------
-[TOC]
+<!-- toc -->
 
 C++ 的Lambda表达式
 ------
@@ -133,7 +133,7 @@ public:
 为什么要关心lambda表达式的类型
 ------
 为什么要关心lambda表达式的类型呢？这关系到一些兼容型api的实现。
-首先，如果用std::function绑定lambda表达式，它会走仿函数的执行流程，而不是函数的。（关于std::function实现原理可以参照: [std和boost的function与bind实现剖析](http://www.owent.net/?p=938)）
+首先，如果用std::function绑定lambda表达式，它会走仿函数的执行流程，而不是函数的。（关于std::function实现原理可以参照: [std和boost的function与bind实现剖析](//www.owent.net/?p=938)）
 其次，是因为我在设计之前的[协程任务框架](https://github.com/owt5008137/libcopp)的API的时候，碰上了一些麻烦。
 
 这个麻烦起源于对任务系统的一个接口设计。

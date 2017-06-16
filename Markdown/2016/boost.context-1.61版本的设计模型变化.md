@@ -1,3 +1,22 @@
+---
+title: boost.context-1.61版本的设计模型变化
+tags:
+  - c++0x/11
+  - c++11
+  - couroutine
+  - cpp
+  - g++
+  - gcc
+  - thread
+  - 协程
+id: 1270
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2016-06-14 17:40:29
+---
+
 boost.context-1.61版本的设计模型变化
 ======
 

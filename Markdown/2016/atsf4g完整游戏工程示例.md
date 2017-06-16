@@ -1,4 +1,28 @@
-[TOC]
+---
+title: atsf4g完整游戏工程示例
+tags:
+  - atframework
+  - c++0x/11
+  - c++11
+  - cpp
+  - framework
+  - g++
+  - gcc
+  - git
+  - 无锁队列
+  - 服务器
+  - 框架
+  - 消息队列
+  - 进程间通信
+id: 1306
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2016-10-23 12:31:14
+---
+
+<!-- toc -->
 
 近期仍然在搭建完整的游戏服务器架构。基于[atsf4g（asynchronously-tree server framework fo game）][16]的完整解决方案终于接近完成。基本框架之前其实已经做完了，但是之前解决的只是基本的框架层代码，不包含任何特定的交互模型、协议模型、配置服务等等。这回就整理了一个只包含登入登出逻辑的完整工程，另外优化了一些小细节和周边工具的支持。
 
