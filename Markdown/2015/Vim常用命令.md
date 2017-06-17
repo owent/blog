@@ -1,3 +1,15 @@
+---
+title: Vim常用命令
+tags:
+  - vim
+id: 1170
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2015-05-08 11:21:17
+---
+
 Vim常用命令
 ======
 <!-- toc -->

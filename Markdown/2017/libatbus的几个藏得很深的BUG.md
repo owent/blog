@@ -1,3 +1,28 @@
+---
+title: libatbus的几个藏得很深的bug
+tags:
+  - bus
+  - c++0x/11
+  - c++11
+  - cpp
+  - g++
+  - gcc
+  - linux
+  - thread
+  - windows
+  - 内存实现
+  - 多线程
+  - 无锁队列
+  - 消息队列
+  - 进程间通信
+id: 1411
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2017-04-23 23:48:54
+---
+
 # libatbus的几个藏得很深的BUG
 
 <!-- toc -->

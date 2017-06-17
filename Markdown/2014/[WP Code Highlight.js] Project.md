@@ -1,3 +1,16 @@
+---
+title: '[WP Code Highlight.js] Project'
+tags:
+  - highlight.js
+  - PHP
+  - plugin
+  - wordpress
+id: 1066
+categories:
+  - Work
+date: 2014-06-12 20:39:11
+---
+
 [WP Code Highlight.js]	Project
 ====================
 

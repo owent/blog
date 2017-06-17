@@ -1,3 +1,26 @@
+---
+title: libatbus基本功能及单元测试终于写完啦
+tags:
+  - c++0x/11
+  - c++11
+  - cpp
+  - g++
+  - gcc
+  - linux
+  - STL
+  - thread
+  - vc
+  - 无锁队列
+  - 消息队列
+  - 进程间通信
+id: 1214
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2016-02-19 12:44:53
+---
+
 libatbus基本功能及单元测试终于写完啦
 ======
 

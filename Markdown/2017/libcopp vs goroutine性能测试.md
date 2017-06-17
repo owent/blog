@@ -1,3 +1,22 @@
+---
+title: libcopp(v2) vs goroutine性能测试
+tags:
+  - coroutine
+  - cpp
+  - g++
+  - gcc
+  - go
+  - goroutine
+  - libcopp
+  - 协程
+id: 1465
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2017-06-10 15:57:29
+---
+
 # libcopp(v2) vs goroutine性能测试
 
 本来是没想写这个对比。无奈之前和[call_in_stack][2]的作者聊了一阵，发现了一些[libcopp][1]的改进空间。然后顺便看了新的boost.context的cc部分的代码，有所启发。想给[libcopp][1]做一些优化，主要集中在减少分配次数从而减少内存碎片；在支持的编译器里有些地方用右值引用来减少不必要的拷贝；减少原子操作和减少L1cache miss几个方面。

@@ -24,6 +24,8 @@ Some old articles are written by staticeditor and now in gitbook. Anything that 
 http://owent.net/ -> /
 http://www.owent.net/ -> /
 
+Blablabla... -> Blablabla
+
 tags blablabla...
 
 ## Plugins for hexo

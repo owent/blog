@@ -1,3 +1,16 @@
+---
+title: Lua性能分析
+tags:
+  - lua
+  - profile
+id: 1128
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2014-12-12 16:14:11
+---
+
 Lua性能分析
 ============
 

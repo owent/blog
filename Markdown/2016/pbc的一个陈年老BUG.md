@@ -1,3 +1,18 @@
+---
+title: pbc的一个陈年老BUG
+tags:
+  - lua
+  - Protobuf
+  - 消息队列
+  - 进程间通信
+id: 1273
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2016-07-04 13:01:42
+---
+
 pbc的一个陈年老BUG
 ======
 

@@ -1,3 +1,23 @@
+---
+title: '近期研究VPN的一些记录(OpenVPN,pptp,l2tp)'
+tags:
+  - l2tp
+  - openswan
+  - openvpn
+  - PacketiX
+  - pptp
+  - softether
+  - strongswan
+  - vpn
+  - vpnc
+id: 1105
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2014-09-28 20:36:46
+---
+
 近期研究VPN的一些记录(OpenVPN,pptp,l2tp)
 ===================
 

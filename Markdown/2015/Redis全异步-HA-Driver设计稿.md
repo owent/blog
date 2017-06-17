@@ -1,3 +1,18 @@
+---
+title: Redis全异步(HA)Driver设计稿
+tags:
+  - c
+  - cluster
+  - redis
+  - sentinel
+id: 1182
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2015-07-04 22:24:46
+---
+
 Redis全异步高可用Driver设计稿
 ======
 
