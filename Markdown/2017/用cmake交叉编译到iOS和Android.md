@@ -1,3 +1,18 @@
+---
+title: 用cmake交叉编译到iOS和Android
+tags:
+  - android
+  - cmake
+  - ios
+  - ndk
+id: 1405
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2017-04-16 03:37:17
+---
+
 # 用cmake交叉编译到iOS和Android
 
 <!-- toc -->

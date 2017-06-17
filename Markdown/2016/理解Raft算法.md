@@ -1,3 +1,18 @@
+---
+title: 理解Raft算法
+tags:
+  - paxos
+  - raft
+  - 分布式
+  - 去中心化
+id: 1226
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2016-03-17 21:29:24
+---
+
 # 理解Raft算法
 
 ## 前言

@@ -1,3 +1,17 @@
+---
+title: 我们的Lua类绑定机制
+tags:
+  - c
+  - c++11
+  - lua
+id: 1153
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2015-04-15 16:16:39
+---
+
 我们的Lua类绑定机制
 ======
 

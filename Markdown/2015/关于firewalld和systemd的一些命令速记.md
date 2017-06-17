@@ -1,3 +1,18 @@
+---
+title: 关于firewalld和systemd的一些命令速记
+tags:
+  - firewall-cmd
+  - firewalld
+  - systemctl
+  - systemd
+id: 1160
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2015-04-23 15:55:44
+---
+
 关于firewalld和systemd的一些命令速记
 ======
 

@@ -1,3 +1,22 @@
+---
+title: 小记最近踩得两个C++坑
+tags:
+  - c
+  - c++0x/11
+  - c++11
+  - cpp
+  - g++
+  - gcc
+  - linux
+  - STL
+  - 内存实现
+id: 1189
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2015-07-25 14:53:44
+---
 
 小记最近踩得两个C++坑
 ======

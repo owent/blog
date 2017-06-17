@@ -1,3 +1,19 @@
+---
+title: 对atbus的小数据包的优化
+tags:
+  - c++11
+  - ipc
+  - 无锁队列
+  - 消息队列
+  - 进程间通信
+id: 1286
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2016-07-09 14:16:41
+---
+
 对atbus的小数据包的优化
 ======
 

@@ -10,4 +10,3 @@ All articles posted in 2014 and older
 * [集成Qt Webkit 到cocos2d-x](集成Qt Webkit 到cocos2d-x.md)
 * [tolua++内存释放坑](tolua++内存释放坑.md)
 * [Lua性能分析](Lua性能分析.md)
-* [回顾2014](回顾2014.md)

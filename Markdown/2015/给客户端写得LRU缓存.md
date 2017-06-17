@@ -1,3 +1,16 @@
+---
+title: 给客户端写得LRU缓存
+tags:
+  - algorithm
+  - 算法
+id: 1206
+categories:
+  - Article
+  - Blablabla...
+  - Work
+date: 2016-01-04 20:23:18
+---
+
 给客户端写得LRU缓存
 ======
 

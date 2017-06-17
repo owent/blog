@@ -1,3 +1,22 @@
+---
+title: 再议 C++ 11 Lambda表达式
+tags:
+  - c++0x/11
+  - c++11
+  - cpp
+  - function
+  - g++
+  - gcc
+  - lambda
+  - STL
+  - template
+id: 1060
+categories:
+  - Article
+  - Blablabla...
+date: 2014-06-03 20:55:44
+---
+
 再议 C++ 11 Lambda表达式
 ==============
 

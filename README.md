@@ -21,6 +21,8 @@ Some old articles are written by staticeditor and now in gitbook. Anything that 
 
 &nbsp; =>  
 文件名，空格 => -
+http://owent.net/ -> /
+http://www.owent.net/ -> /
 
 tags blablabla...
 

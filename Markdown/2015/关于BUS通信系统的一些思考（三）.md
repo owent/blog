@@ -1,3 +1,18 @@
+---
+title: 关于BUS通信系统的一些思考（三）
+tags:
+  - bus
+  - ipc
+  - 无锁队列
+  - 消息队列
+  - 进程间通信
+id: 1201
+categories:
+  - Article
+  - Blablabla...
+date: 2015-11-08 17:17:05
+---
+
 > [接上文关于bus通信系统的一些思考（二）](://www.owent.net/?p=1099)
 >
 > 之前的文章内容应该要有修订，但是并没有更新到blog里，而是直接写在了[libatbus](https://github.com/owt5008137/libatbus)的文档里
