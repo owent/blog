@@ -5,13 +5,7 @@ All contents are also published on https://owent.net
 
 About Me
 ------
-See [About](About.md)
-
-Directories
-------
-- **Draft**: drafts in all formats
-- **Tex**: Published articles written using tex/latex
-- **Markdown**: Published articles written using markdown(only this directory will be analysised by gitbook)
+See [About](source/about/index.md)
 
 Notice
 ------
@@ -24,9 +18,9 @@ Some old articles are written by staticeditor and now in gitbook. Anything that 
 http://owent.net/ -> /
 http://www.owent.net/ -> /
 
-Blablabla... -> Blablabla
+Blablabla -> Blablabla
 
-tags blablabla...
+tags Blablabla
 
 ## Plugins for hexo
 + hexo-renderer-dot

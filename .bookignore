@@ -1,2 +1,4 @@
-/Draft
-/Resource
+/node_modules
+/public
+/scaffolds
+/themes
