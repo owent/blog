@@ -1,7 +1,7 @@
 # Summary
 * [About Me](source/about/index.md)
 * [2009](source/_posts/2009/README.md)
-  * [09年8月14日 ECUST ACM 练习赛总结](source/_posts/2009/09%E5%B9%B48%E6%9C%8814%E6%97%A5%20ECUST%20ACM%20%E7%BB%83%E4%B9%A0%E8%B5%9B%E6%80%BB%E7%BB%93.md)
+  * [09年8月14日 ECUST ACM 练习赛总结](source/_posts/2009/09年8月14日 ECUST ACM 练习赛总结.md)
   * [09年8月9日 ECUST ACM 练习赛总结](source/_posts/2009/09%E5%B9%B48%E6%9C%889%E6%97%A5%20ECUST%20ACM%20%E7%BB%83%E4%B9%A0%E8%B5%9B%E6%80%BB%E7%BB%93.md)
   * [C/C++语言常用排序算法](source/_posts/2009/C_CPP%E8%AF%AD%E8%A8%80%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.md)
   * [ECUST 09年 校赛个人训练赛第五场总结](source/_posts/2009/ECUST%2009%E5%B9%B4%20%E6%A0%A1%E8%B5%9B%E4%B8%AA%E4%BA%BA%E8%AE%AD%E7%BB%83%E8%B5%9B%E7%AC%AC%E4%BA%94%E5%9C%BA%E6%80%BB%E7%BB%93.md)
