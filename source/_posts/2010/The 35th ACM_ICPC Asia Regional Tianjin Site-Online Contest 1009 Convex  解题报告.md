@@ -1,7 +1,5 @@
 ---
-title: >-
-  The 35th ACM/ICPC Asia Regional Tianjin Site —— Online Contest 1009 Convex
-  解题报告
+title: The 35th ACM/ICPC Asia Regional Tianjin Site —— Online Contest 1009 Convex 解题报告
 tags:
   - acm
 id: 13
