@@ -2,7 +2,7 @@
     "title": "OWenT's Blog Articles",
     "description": "Most of articles in my blog are also posted here.",
     "plugins": [
-        "katex",
+        "mathjax",
         "etoc-plus"
     ],
     "pluginsConfig": {
@@ -12,6 +12,9 @@
             "notoc": false,
             "header": 1,
             "translit": false
+        },
+        "mathjax": {
+            "forceSVG": true
         }
     },
     "language": "zh-hans"

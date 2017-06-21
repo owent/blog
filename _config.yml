@@ -7,8 +7,12 @@ title: "I'm OWenT"
 subtitle: "Chanllege Everything"
 description: "OWenT' Blog"
 author: owent
-language: zh-cn
+language: [zh,en]
 timezone: 'Asia/Shanghai'
+
+i18n:
+  type: [page, post]
+  generator: [index, archive, category, tag]
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -38,7 +42,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: false
+  enable: true
   line_number: true
   auto_detect: false
   tab_replace:
@@ -70,29 +74,48 @@ theme: landscape
 deploy:
   type:
 
-# hexo-filter-plugin (https://github.com/Jamling/hexo-filter-highlight) config 
-## highlight in frontend, the plugin (backend) just do some prepare work.
-## you need to read the docs on https://github.com/Jamling/hexo-filter-highlight to getting start
-hljs:
-  enable: true #true to enable the plugin
-  line_number: frontend # add line_number in frontend or backend
-  trim_indent: backend # trim the indent of code block to prettify output. backend or front-end (recommend)
-  copy_code: true # show copy code in caption.
-  label:
-    left: Code
-    right: ':'
-    copy: Copy Code
-
 math:
-  engine: 'katex' # mathjax or 'katex'
-  katex:
-    css: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
-    js: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" # not used
-    config: {
-      throwOnError: false,
-      errorColor: "#cc0000"
-    }
+  engine: 'mathjax' # mathjax or 'katex'
+  # katex:
+  #   css: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+  #   js: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" # not used
+  #   config: {
+  #     throwOnError: false,
+  #     errorColor: "#cc0000"
+  #   }
   # mathjax:
   #   src: custom_mathjax_source
   #   config:
   #     # MathJax config
+
+# Markdown-it config
+## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+  anchors:
+    level: 4
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSymbol: ¶
+
+toc:
+  maxdepth: 4
+  class: toc
+  slugify: transliteration
+  anchor:
+    position: before
+    symbol: '#'
+    style: header-anchor
