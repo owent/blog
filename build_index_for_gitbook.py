@@ -2,10 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import os
-import sys
 import glob
 import re
-
 
 os.chdir(os.path.dirname(__file__))
 
@@ -16,6 +14,8 @@ SUMMARY_FILE.write('# Summary\n\n')
 SUMMARY_FILE.write('* [About Me](source/about/index.md)\n')
 
 TITLE_PATTERN = re.compile('title: ([^\r\n]*)')
+ID_PATTERN = re.compile('id:\\s*(\\d*)')
+
 REPLACE_PATTERN = re.compile('([\\[\\]\\(\\)])')
 
 def walk_dir(parent_dir, *, ident=''):
