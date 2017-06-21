@@ -1,6 +1,6 @@
 # 2015
 
-  * [针对Java JIT的优化(转表工具:xresloader)](针对Java JIT的优化(转表工具xresloader).md)
+  * [针对Java JIT的优化(转表工具:xresloader)](针对Java JIT的优化\(转表工具xresloader\).md)
   * [近期活动比较零散](近期活动比较零散.md)
   * [给客户端写得LRU缓存](给客户端写得LRU缓存.md)
   * [我们的Lua类绑定机制](我们的Lua类绑定机制.md)
@@ -14,5 +14,5 @@
   * [Vim常用命令](Vim常用命令.md)
   * [Redis全异步(HA)Driver设计稿](Redis全异步-HA-Driver设计稿.md)
   * [LLVM+Clang+Libcxx+Libcxxabi（3.6）工具链编译（完成自举编译）](LLVM+Clang+Libcxx+Libcxxabi（3.6）工具链编译（完成自举编译）.md)
-  * [Jenkins(hudson)插件记录](Jenkins(hudson)插件记录.md)
+  * [Jenkins(hudson)插件记录](Jenkins\(hudson\)插件记录.md)
   * [Android NDK undefined reference to ___tls_get_addr 错误](Android NDK undefined reference to ___tls_get_addr 错误.md)

@@ -30,7 +30,7 @@ def walk_dir(parent_dir, *, ident=''):
         title_name = title_name.replace(']', '\\]')
         title_md = '{0}* [{1}]({2}/README.md)'.format(
             ident, title_name,
-            parent_dir.replace('\\', '/')
+            parent_dir.replace('\\', '/').replace('(', '\\(').replace(')', '\\)')
         )
         SUMMARY_FILE.write(title_md)
         SUMMARY_FILE.write('\n')
@@ -44,7 +44,7 @@ def walk_dir(parent_dir, *, ident=''):
                 readme_file = get_readme_file(parent_dir, ident)
             title_file = os.path.basename(file)
             readme_file.write('  * [{0}]({1}/README.md)\n'.format(
-                title_file, os.path.relpath(file, parent_dir).replace('\\', '/')))
+                title_file, os.path.relpath(file, parent_dir).replace('\\', '/').replace('(', '\\(').replace(')', '\\)')))
             walk_dir(file, ident=ident + ' ')
         elif file[-3:].lower() == '.md':
             if readme_file is None:
@@ -60,9 +60,10 @@ def walk_dir(parent_dir, *, ident=''):
             title_file = title_file.replace('[', '\\[')
             title_file = title_file.replace(']', '\\]')
             SUMMARY_FILE.write('{0}  * [{1}]({2})\n'.format(
-                ident, title_file, file.replace('\\', '/')))
+                ident, title_file, file.replace('\\', '/').replace('(', '\\(').replace(')', '\\)')))
             readme_file.write('  * [{0}]({1})\n'.format(
-                title_file, os.path.relpath(file, parent_dir).replace('\\', '/')))
+                title_file, os.path.relpath(file, parent_dir)
+                .replace('\\', '/').replace('(', '\\(').replace(')', '\\)')))
 
 
 if __name__ == "__main__":
