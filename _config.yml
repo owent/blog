@@ -3,18 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: I'm OWenT
-subtitle: Challenge Everything
-description: owent's blog
+title: "I'm OWenT"
+subtitle: "Chanllege Everything"
+description: "OWenT' Blog"
 author: owent
-language:
-timezone:
+language: zh-cn
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://127.0.0.1
+url: https://owent.net
 root: /
-permalink: :year/:month/:title.html
+permalink: :year/:month/:id.html
 permalink_defaults:
 
 # Directory
@@ -25,7 +25,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: README.md
+skip_render: '**/*/README.md'
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -70,9 +70,6 @@ theme: landscape
 deploy:
   type:
 
-plugins:
-  - hexo-filter-highlight
-
 # hexo-filter-plugin (https://github.com/Jamling/hexo-filter-highlight) config 
 ## highlight in frontend, the plugin (backend) just do some prepare work.
 ## you need to read the docs on https://github.com/Jamling/hexo-filter-highlight to getting start
@@ -85,3 +82,17 @@ hljs:
     left: Code
     right: ':'
     copy: Copy Code
+
+math:
+  engine: 'katex' # mathjax or 'katex'
+  katex:
+    css: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+    js: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" # not used
+    config: {
+      throwOnError: false,
+      errorColor: "#cc0000"
+    }
+  # mathjax:
+  #   src: custom_mathjax_source
+  #   config:
+  #     # MathJax config

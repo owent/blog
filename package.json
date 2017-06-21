@@ -1,5 +1,5 @@
 {
-  "name": "hexo-site",
+  "name": "owent-blog",
   "version": "0.0.0",
   "private": true,
   "hexo": {
@@ -18,6 +18,8 @@
     "hexo-generator-sitemap": "^1.2.0",
     "hexo-generator-tag": "^0.2.0",
     "hexo-generator-type": "^0.1.4",
+    "hexo-inject": "^1.0.0",
+    "hexo-math": "^3.0.2",
     "hexo-migrator-wordpress": "^0.1.2",
     "hexo-renderer-ejs": "^0.2.0",
     "hexo-renderer-marked": "^0.2.10",

@@ -37,7 +37,11 @@ def walk_dir(parent_dir):
                     print('[INFO] Rename file from {0} to {1}'.format(file, target_file_name))
                     os.rename(file, target_file_name)
             else:
-                print('[WARN] File {0} has no id'.format(file))
+                basename = os.path.basename(file)
+                if quote(unquote(basename)) != basename:
+                    target_file_name = os.path.join(os.path.dirname(file), quote(unquote(basename)))
+                    print('[INFO] Rename directory from {0} to {1}'.format(file, target_file_name))
+                    os.rename(file, target_file_name)
 
 
 if __name__ == "__main__":

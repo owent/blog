@@ -56,5 +56,6 @@ tags Blablabla
 ### Supported LaTeX/Tex commands on [MathJax][1]
 1. https://docs.mathjax.org/en/latest/tex.html#supported-latex-commands
 2. http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm
+3. https://khan.github.io/KaTeX/function-support.html
 
 [1]: https://www.mathjax.org/
