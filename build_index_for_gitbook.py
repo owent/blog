@@ -16,6 +16,7 @@ SUMMARY_FILE.write('# Summary\n\n')
 SUMMARY_FILE.write('* [About Me](source/about/index.md)\n')
 
 TITLE_PATTERN = re.compile('title: ([^\r\n]*)')
+REPLACE_PATTERN = re.compile('([\\[\\]\\(\\)])')
 
 def walk_dir(parent_dir, *, ident=''):
     print('[INFO] Analysis for directory {0}'.format(parent_dir))
@@ -26,11 +27,10 @@ def walk_dir(parent_dir, *, ident=''):
     readme_file = None
     def get_readme_file(parent_dir, ident):
         title_name = os.path.basename(parent_dir)
-        title_name = title_name.replace('[', '\\[')
-        title_name = title_name.replace(']', '\\]')
+        title_name = REPLACE_PATTERN.sub('\\\\\\g<0>', title_name)
         title_md = '{0}* [{1}]({2}/README.md)'.format(
             ident, title_name,
-            parent_dir.replace('\\', '/').replace('(', '\\(').replace(')', '\\)')
+            REPLACE_PATTERN.sub('\\\\\\g<0>', parent_dir.replace('\\', '/'))
         )
         SUMMARY_FILE.write(title_md)
         SUMMARY_FILE.write('\n')
@@ -44,7 +44,7 @@ def walk_dir(parent_dir, *, ident=''):
                 readme_file = get_readme_file(parent_dir, ident)
             title_file = os.path.basename(file)
             readme_file.write('  * [{0}]({1}/README.md)\n'.format(
-                title_file, os.path.relpath(file, parent_dir).replace('\\', '/').replace('(', '\\(').replace(')', '\\)')))
+                title_file, REPLACE_PATTERN.sub('\\\\\\g<0>', os.path.relpath(file, parent_dir).replace('\\', '/'))))
             walk_dir(file, ident=ident + ' ')
         elif file[-3:].lower() == '.md':
             if readme_file is None:
@@ -57,13 +57,11 @@ def walk_dir(parent_dir, *, ident=''):
                         title_file = title_file[1:-1]
             else:
                 title_file = os.path.basename(file)[0:-3]
-            title_file = title_file.replace('[', '\\[')
-            title_file = title_file.replace(']', '\\]')
+            title_file = REPLACE_PATTERN.sub('\\\\\\g<0>', title_file)
             SUMMARY_FILE.write('{0}  * [{1}]({2})\n'.format(
-                ident, title_file, file.replace('\\', '/').replace('(', '\\(').replace(')', '\\)')))
+                ident, title_file, REPLACE_PATTERN.sub('\\\\\\g<0>', file.replace('\\', '/'))))
             readme_file.write('  * [{0}]({1})\n'.format(
-                title_file, os.path.relpath(file, parent_dir)
-                .replace('\\', '/').replace('(', '\\(').replace(')', '\\)')))
+                title_file, REPLACE_PATTERN.sub('\\\\\\g<0>', os.path.relpath(file, parent_dir).replace('\\', '/'))))
 
 
 if __name__ == "__main__":
