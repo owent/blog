@@ -6,7 +6,13 @@ rss: /atom.xml
 
 # Content
 excerpt_link: Read More
-fancybox: true
+jquery:
+  js: //code.jquery.com/jquery-3.2.1.min.js
+
+fancybox:
+  enable: true
+  js: //cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js
+  css: //cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css
 
 # Sidebar
 sidebar: right
