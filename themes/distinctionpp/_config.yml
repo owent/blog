@@ -8,6 +8,7 @@ rss: /atom.xml
 excerpt_link: Read More
 jquery:
   js: //code.jquery.com/jquery-3.2.1.min.js
+  migrate: //code.jquery.com/jquery-migrate-1.4.1.min.js
 
 fancybox:
   enable: true

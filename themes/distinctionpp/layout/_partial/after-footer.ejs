@@ -4,20 +4,38 @@
 <% if (page.permalink) { %>
 var disqus_url = '<%= page.permalink %>';
 <% } %>
-      (function () {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-  </script>
+  (function () {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<% } %>
+<%- js(theme.jquery.js) %>
+<% if (theme.jquery.migrate) { %>
+<%- js(theme.jquery.migrate) %>
+<% } %>
+
+<% if (theme.fancybox.enable){ %>
+  <%- css(theme.fancybox.css) %>
+  <%- js(theme.fancybox.js) %>
+<% } %>
+<%- js('js/script') %>
+
+<% if (!config.highlight.enable) { %>
+  <!-- highlight.js begin -->
+  <%- js(config.highlight.url.js) %>
+  <% for (const lang of config.highlight.langs) { %>
+  <%- js(lang) %>
   <% } %>
-    <%- js(theme.jquery.js) %>
-
-      <% if (theme.fancybox.enable){ %>
-        <%- css(theme.fancybox.css) %>
-          <%- js(theme.fancybox.js) %>
-            <% } %>
-
-              <%- js('js/script') %>
+  <script type="text/javascript">
+  (function (){
+      <% highlightjs_options = JSON.stringify(config.highlight.options || {}) %>
+      hljs.configure(<%- highlightjs_options %>);
+      hljs.initHighlightingOnLoad();
+  })();
+  </script>
+  <!-- highlight.js end -->
+<% } %>

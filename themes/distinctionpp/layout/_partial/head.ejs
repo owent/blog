@@ -28,8 +28,10 @@
   <% if (theme.favicon){ %>
     <link rel="icon" href="<%- theme.favicon %>">
   <% } %>
-  <% if (config.highlight.enable){ %>
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <% if (!config.highlight.enable) { %>
+  <!-- highlight.js begin -->
+  <%- css(config.highlight.url.style) %>
+  <!-- highlight.js end -->
   <% } %>
   <%- css('css/style') %>
   <%- partial('google-analytics') %>

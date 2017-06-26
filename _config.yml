@@ -42,10 +42,18 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: false
-  line_number: true
-  auto_detect: false
-  tab_replace:
+  enable: false         # set false to use highlight.js in client mode
+  style: "default"      # style name
+  langs: ['go']
+  url:                  # 
+    js: "//cdnjs.cloudflare.com/ajax/libs/highlight.js/<%- version %>/highlight.min.js"
+    style: "//cdnjs.cloudflare.com/ajax/libs/highlight.js/<%- version %>/styles/<%- style %>.min.css"
+    lang: "//cdnjs.cloudflare.com/ajax/libs/highlight.js/<%- version %>/languages/<%- lang %>.min.js"
+  options:              # options of highlight.js see http://highlightjs.readthedocs.io/en/latest/api.html#configure-options
+    tabReplace: '    '
+    useBR: false
+    #classPrefix: 'hljs-'
+    languages: {}   # language alias
 
 # Category & Tag
 default_category: uncategorized
@@ -115,7 +123,3 @@ toc:
   maxdepth: 4
   class: toc
   slugify: transliteration
-  anchor:
-    position: before
-    symbol: '#'
-    style: header-anchor
