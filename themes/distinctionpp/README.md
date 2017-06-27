@@ -6,6 +6,8 @@ A brand new default theme for [Hexo].
 
 ## Installation
 
++ hexo-renderer-bourbon
+
 ### Install
 
 ``` bash

@@ -2,5 +2,8 @@
   "name": "hexo-theme-distinctionpp",
   "version": "0.0.1",
   "private": true,
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "sass": "^3.4.0"
+  }
 }
