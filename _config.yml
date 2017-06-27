@@ -38,13 +38,14 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
   enable: false         # set false to use highlight.js in client mode
   style: "default"      # style name
-  langs: ['go']
+  langs: ['capnproto', 'cmake', 'd', 'dos', 'erlang', 'go', 'less', 'lua', 'php', 'powershell', 'protobuf', 'profile', 'typescript', 'vim']
+  selector: 'pre>code'
   url:                  # 
     js: "//cdnjs.cloudflare.com/ajax/libs/highlight.js/<%- version %>/highlight.min.js"
     style: "//cdnjs.cloudflare.com/ajax/libs/highlight.js/<%- version %>/styles/<%- style %>.min.css"
@@ -91,8 +92,8 @@ math:
   #     throwOnError: false,
   #     errorColor: "#cc0000"
   #   }
-  # mathjax:
-  #   src: custom_mathjax_source
+  mathjax:
+    src: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
   #   config:
   #     # MathJax config
 

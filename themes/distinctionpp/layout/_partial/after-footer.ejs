@@ -24,18 +24,25 @@ var disqus_url = '<%= page.permalink %>';
 <% } %>
 <%- js('js/script') %>
 
-<% if (!config.highlight.enable) { %>
+<% if (!config.highlight.enable && theme.highlight.enable) { %>
   <!-- highlight.js begin -->
   <%- js(config.highlight.url.js) %>
   <% for (const lang of config.highlight.langs) { %>
   <%- js(lang) %>
   <% } %>
   <script type="text/javascript">
-  (function (){
-      <% highlightjs_options = JSON.stringify(config.highlight.options || {}) %>
-      hljs.configure(<%- highlightjs_options %>);
-      hljs.initHighlightingOnLoad();
-  })();
+  jQuery(function (){
+      hljs.configure(<%- config.highlight['options-json'] %>);
+      jQuery("<%- config.highlight.selector %>").each(function(i, block) {
+          try {
+            hljs.highlightBlock(block);
+          } catch (e) {
+            if (window.console) {
+              console.log(e.toString() + "\r\nMaybe can not detect the language");
+            }
+          }
+      });
+  });
   </script>
   <!-- highlight.js end -->
 <% } %>

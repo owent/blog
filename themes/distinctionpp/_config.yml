@@ -6,6 +6,10 @@ rss: /atom.xml
 
 # Content
 excerpt_link: Read More
+
+highlight:
+  enable: true
+
 jquery:
   js: //code.jquery.com/jquery-3.2.1.min.js
   migrate: //code.jquery.com/jquery-migrate-1.4.1.min.js
@@ -37,7 +41,3 @@ show_count: false
 # Miscellaneous
 google_analytics:
 favicon: /favicon.png
-twitter:
-google_plus:
-fb_admins:
-fb_app_id:
