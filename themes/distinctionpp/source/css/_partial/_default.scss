@@ -1,0 +1,28 @@
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-content;
+  background-color: rgb(51,51,51);
+}
+
+pre, code {
+    font-family: $font-code;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: $font-title;
+}
+
+#container:before {
+  display: none;
+}
+
+#main {
+  background-color: rgb(192,192,192);
+}

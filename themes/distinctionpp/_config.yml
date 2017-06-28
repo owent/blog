@@ -40,4 +40,4 @@ show_count: false
 
 # Miscellaneous
 google_analytics:
-favicon: /favicon.png
+favicon: /favicon.ico

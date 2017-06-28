@@ -4,6 +4,6 @@
   "private": true,
   "devDependencies": {},
   "dependencies": {
-    "sass": "^3.4.0"
+    "hexo-renderer-sass": "^0.3.2"
   }
 }
