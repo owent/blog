@@ -5995,8 +5995,7 @@ ol {
   padding: 0; }
 
 body {
-  font-family: "Noto Mono", "DejaVu Sans", "Noto Sans CJK SC", "YaHei Consolas Hybrid", "Source Code Pro", "Microsoft YaHei", Consolas, source-sans-pro, monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #333333; }
+  font-family: "Noto Mono", "DejaVu Sans", "Noto Sans CJK SC", "YaHei Consolas Hybrid", "Source Code Pro", "Microsoft YaHei", Consolas, source-sans-pro, monospace, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 pre, code {
   font-family: "Noto Mono", "DejaVu Sans Mono", "Noto Sans Mono CJK SC", "YaHei Consolas Hybrid", "Source Code Pro", "Microsoft YaHei", Consolas, source-sans-pro, monospace, "Helvetica Neue", Helvetica, Arial, sans-serif; }
@@ -6008,11 +6007,26 @@ h1, h2, h3, h4, h5, h6 {
   display: none; }
 
 #main {
-  background-color: silver; }
+  width: 80%;
+  padding: 2em;
+  margin: auto; }
+
+#main-content .article {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 1px; }
+
+html, body {
+  background: -webkit-repeating-radial-gradient(circle, transparent, transparent 3em, #a0a0a0 1em, transparent 6em, #b0b0b0 6.5em), -webkit-repeating-radial-gradient(ellipse farthest-corner, transparent 1em, #909090 1em, transparent 5em, #909090 2em), -webkit-repeating-radial-gradient(circle, transparent, transparent 3em, gray 1em, transparent 2em, gray 4em), -webkit-repeating-radial-gradient(circle, transparent 3em, gray 1em, transparent 2em, gray 4em), silver;
+  background: repeating-radial-gradient(circle, transparent, transparent 3em, #a0a0a0 1em, transparent 6em, #b0b0b0 6.5em), repeating-radial-gradient(ellipse farthest-corner, transparent 1em, #909090 1em, transparent 5em, #909090 2em), repeating-radial-gradient(circle, transparent, transparent 3em, gray 1em, transparent 2em, gray 4em), repeating-radial-gradient(circle, transparent 3em, gray 1em, transparent 2em, gray 4em), silver;
+  background-blend-mode: multiply;
+  background-size: 10em 10em;
+  background-position: 0 0, 5em 5em, 15em 50em; }
 
 #header {
   border-bottom: 2px solid #000;
-  padding: 2em 0.5em 0.2em 0.5em; }
+  padding: 2em 0.5em 0.2em 0.5em;
+  background-color: #333333; }
 
 #site-title {
   font-size: 4em;

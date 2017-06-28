@@ -8,7 +8,6 @@ ol {
 
 body {
   font-family: $font-content;
-  background-color: rgb(51,51,51);
 }
 
 pre, code {
@@ -24,5 +23,29 @@ h1, h2, h3, h4, h5, h6{
 }
 
 #main {
-  background-color: rgb(192,192,192);
+  width: 80%;
+  padding: 2em;
+  margin: auto;
+}
+
+#main-content {
+  .article {
+    background-color: rgb(241, 241, 241);
+    @include border-radius(5px);
+    padding: 1px;
+  }
+}
+
+
+html, body {
+    $background-c1: rgb(160,160,160);
+    $background-c2: rgb(176,176,176);
+    $background-c3: rgb(144,144,144);
+    $background-c4: rgb(128,128,128);
+    $background-c5: rgb(192,192,192);
+    background: -webkit-repeating-radial-gradient(circle, transparent, transparent 3em, $background-c1 1em, transparent 6em, $background-c2 6.5em), -webkit-repeating-radial-gradient(ellipse farthest-corner, transparent 1em, $background-c3 1em, transparent 5em, $background-c3 2em), -webkit-repeating-radial-gradient(circle, transparent, transparent 3em, $background-c4 1em, transparent 2em, $background-c4 4em), -webkit-repeating-radial-gradient(circle, transparent 3em, $background-c4 1em, transparent 2em, $background-c4 4em), $background-c5;
+    background: repeating-radial-gradient(circle, transparent, transparent 3em, $background-c1 1em, transparent 6em, $background-c2 6.5em), repeating-radial-gradient(ellipse farthest-corner, transparent 1em, $background-c3 1em, transparent 5em, $background-c3 2em), repeating-radial-gradient(circle, transparent, transparent 3em, $background-c4 1em, transparent 2em, $background-c4 4em), repeating-radial-gradient(circle, transparent 3em, $background-c4 1em, transparent 2em, $background-c4 4em), $background-c5;
+    background-blend-mode: multiply;
+    background-size: 10em 10em;
+    background-position: 0 0, 5em 5em, 15em 50em;
 }
