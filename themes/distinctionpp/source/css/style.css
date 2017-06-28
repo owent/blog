@@ -6007,14 +6007,19 @@ h1, h2, h3, h4, h5, h6 {
   display: none; }
 
 #main {
-  width: 80%;
   padding: 2em;
-  margin: auto; }
+  margin: 0 auto; }
 
-#main-content .article {
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 1px; }
+#main-content {
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3;
+  -moz-column-width: 24em;
+  -webkit-column-width: 24em;
+  column-width: 24em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em; }
 
 html, body {
   background: -webkit-repeating-radial-gradient(circle, transparent, transparent 3em, #a0a0a0 1em, transparent 6em, #b0b0b0 6.5em), -webkit-repeating-radial-gradient(ellipse farthest-corner, transparent 1em, #909090 1em, transparent 5em, #909090 2em), -webkit-repeating-radial-gradient(circle, transparent, transparent 3em, gray 1em, transparent 2em, gray 4em), -webkit-repeating-radial-gradient(circle, transparent 3em, gray 1em, transparent 2em, gray 4em), silver;
@@ -6068,3 +6073,38 @@ html, body {
     display: block;
     content: "";
     clear: both; }
+
+.archive-article {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 1px;
+  width: 430px;
+  margin: 12px 8px 12px 8px;
+  display: block;
+  break-inside: avoid;
+  -moz-page-break-inside: avoid;
+  -webkit-column-break-inside: avoid; }
+  .archive-article .archive-article-inner {
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 4px 3px 3px 3px;
+    padding: 16px;
+    overflow: hidden; }
+    .archive-article .archive-article-inner .archive-article-header a {
+      color: #333333; }
+    .archive-article .archive-article-inner .archive-article-excerpt {
+      color: #7b7d83; }
+    .archive-article .archive-article-inner .archive-article-more a {
+      color: darkgreen;
+      font-weight: bolder; }
+    .archive-article .archive-article-inner .archive-article-footer {
+      background: #ccc;
+      border: 1px solid #666;
+      border-radius: 4px;
+      color: #000;
+      font-size: 0.8em;
+      font-weight: bold;
+      margin-bottom: 5px;
+      overflow: hidden;
+      padding: 3px 8px;
+      text-shadow: 0 0 1px #000; }

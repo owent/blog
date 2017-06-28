@@ -1,8 +1,8 @@
 <article class="archive-article archive-type-<%= post.layout %>">
   <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <%- partial('post/date', {class_name: 'archive-article-date', date_format: 'MMM D'}) %>
-      <%- partial('post/title', {class_name: 'archive-article-title'}) %>
-    </header>
+    <header class="archive-article-header"><%- partial('post/title', {class_name: 'archive-article-title'}) %></header>
+    <div class="archive-article-excerpt"></div>
+    <div class="archive-article-more"><a href="<%- url_for(post.link) %>" target="_blank" itemprop="url"><%- __('read_more') %></a></div>
+    <div class="archive-article-footer"><%- partial('post/date', {class_name: 'archive-article-date', date_format: 'MMM D'}) %></div>
   </div>
 </article>

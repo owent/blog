@@ -1,0 +1,47 @@
+.archive-article {
+    background-color: $article-background;
+    @include border-radius(5px);
+    padding: 1px;
+    width: 430px;
+    margin: 12px 8px 12px 8px;
+    display: block;
+    break-inside: avoid;
+    -moz-page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+
+    .archive-article-inner {
+        border: 3px solid rgba(0,0,0,0.1);
+        @include border-radius(5px);
+        margin: 4px 3px 3px 3px;
+        padding: 16px;
+        overflow: hidden;
+
+        .archive-article-header{
+            a {
+                color: rgb(51, 51, 51);
+            }
+        }
+        .archive-article-excerpt{
+            color: rgb(123, 125, 131);
+        }
+        .archive-article-more{
+            a {
+                color: rgb(0,100,0);
+                font-weight: bolder;
+            }
+        }
+        .archive-article-footer{
+            background: #ccc;
+            border: 1px solid #666;
+            @include border-radius(4px);
+            @include box-shadow(inset 1px 1px 5px rgba(0,0,0,0.3));
+            color: #000;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            overflow: hidden;
+            padding: 3px 8px;
+            text-shadow: 0 0 1px #000;
+        }
+    }
+}
