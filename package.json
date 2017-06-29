@@ -30,6 +30,7 @@
     "hexo-server": "^0.2.0",
     "hexo-toc": "^1.0.8",
     "hexo-renderer-sass": "^0.3.2",
+    "hexo-excerpt": "^1.1.2",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0"
   }

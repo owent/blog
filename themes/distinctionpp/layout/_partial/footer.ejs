@@ -1,11 +1,9 @@
 <footer id="footer">
-  <% if (theme.sidebar === 'bottom'){ %>
-    <%- partial('_partial/sidebar') %>
-  <% } %>
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %><br>
-      <%= __('powered_by') %> <a href="<%- url_for() %>" target="_blank"><%= config.author || 'OWenT' %></a>
+      <strong id="footer-left">&copy; <%= date(new Date(), 'YYYY') %> <%= config.title || config.description || config.author || '' %></strong>
+      <strong id="footer-right"><%= __('powered_by') %> <a href="<%- url_for() %>" target="_blank"><%= config.author || 'distinctionpp' %></a></strong>
+      <span id="footer-clearfix"></span>
     </div>
   </div>
 </footer>

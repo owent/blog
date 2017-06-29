@@ -1,0 +1,42 @@
+@mixin break-inside($val) {
+    break-inside: $val;
+    page-break-inside: $val;
+    -moz-page-break-inside: $val;
+    -webkit-column-break-inside: $val;
+}
+
+@mixin columns($val) {
+    columns: $val;
+    -moz-columns: $val; /* Firefox */
+    -webkit-columns: $val; /* Safari 和 Chrome */
+}
+
+@mixin column-width($val) {
+    column-width: $val;
+    -moz-column-width: $val; /* Firefox */
+    -webkit-column-width: $val; /* Safari 和 Chrome */
+}
+
+@mixin column-rule($val) {
+    column-rule: $val;
+    -moz-column-rule: $val; /* Firefox */
+    -webkit-column-rule: $val; /* Safari 和 Chrome */
+}
+
+@mixin column-gap($val) {
+    column-gap: $val;
+    -moz-column-gap: $val; /* Firefox */
+    -webkit-column-gap: $val; /* Safari 和 Chrome */
+}
+
+@mixin column-count($val) {
+    column-count: $val;
+    -moz-column-count: $val; /* Firefox */
+    -webkit-column-count: $val; /* Safari 和 Chrome */
+}
+
+@mixin column-span($val) {
+    column-span: $val;
+    -moz-column-span: $val; /* Firefox */
+    -webkit-column-span: $val; /* Safari 和 Chrome */
+}

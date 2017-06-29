@@ -1,0 +1,35 @@
+
+#footer {
+    border-top: 2px solid #000;
+    font-size: 0.8em;
+    background: #222;
+
+    .outer {
+        .inner {
+            background: #222;
+            margin: 0.25em 0 0.25em 0;
+            border: 0.05em solid #000;
+            @include border-radius(0.25em);
+            @include box-shadow(0 0 0.4em rgb(0,0,0));
+            color: rgb(255,255,255);
+            padding: 0 2em;
+            overflow: hidden;
+        }
+    }
+}
+
+#footer-left {
+    float: left;
+}
+
+#footer-right {
+    float: right;
+    font-style: italic;
+    a {
+        color: rgb(64,128,255);
+    }
+}
+
+#footer-clearfix {
+    @include clearfix;
+}

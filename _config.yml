@@ -124,3 +124,5 @@ toc:
   maxdepth: 4
   class: toc
   slugify: transliteration
+
+excerpt_depth: 5
