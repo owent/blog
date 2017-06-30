@@ -1,6 +1,7 @@
 // Sass configuration
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var rename = require('gulp-rename');
 
 gulp.task('sass', function () {
     gulp.src('*.scss')
@@ -16,10 +17,18 @@ gulp.task('sass', function () {
 
 gulp.task('theme-sass', function () {
     gulp.src('themes/distinctionpp/source/css/*.scss')
-        .pipe(sass())
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(gulp.dest(function (f) {
             return f.base;
-        }))
+        }));
+
+    // gulp.src('themes/distinctionpp/source/css/*.scss')
+    //     .pipe(sass().on('error', sass.logError))
+    //     .pipe(minify())
+    //     .pipe(rename({ suffix: '.min' }))
+    //     .pipe(gulp.dest(function (f) {
+    //         return f.base;
+    //     }));
 });
 
 gulp.task('default', ['theme-sass'], function () {

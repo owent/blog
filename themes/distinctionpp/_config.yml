@@ -14,6 +14,10 @@ jquery:
   js: //code.jquery.com/jquery-3.2.1.min.js
   migrate: //code.jquery.com/jquery-migrate-1.4.1.min.js
 
+bootstrap:
+  js: //cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js
+  css: //cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css
+
 fancybox:
   enable: true
   js: //cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js
@@ -21,6 +25,11 @@ fancybox:
 
 # Sidebar
 sidebar: none
+search:
+  enable: true
+  url: //google.com/search
+  keyword: q
+
 widgets:
 - category
 - tag

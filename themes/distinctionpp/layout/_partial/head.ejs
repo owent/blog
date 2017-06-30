@@ -32,6 +32,7 @@
   <%- css(config.highlight.url.style) %>
   <!-- highlight.js end -->
   <% } %>
+  <%- css((config.bootstrap || {}).css || theme.bootstrap.css) %>
   <%- css('css/style') %>
   <%- partial('google-analytics') %>
 </head>

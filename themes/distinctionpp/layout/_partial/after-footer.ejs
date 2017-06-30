@@ -2,7 +2,7 @@
 <% if (theme.jquery.migrate) { %>
 <%- js(theme.jquery.migrate) %>
 <% } %>
-
+<%- js((config.bootstrap || {}).js || theme.bootstrap.js) %>
 <% if (theme.fancybox.enable){ %>
   <%- css(theme.fancybox.css) %>
   <%- js(theme.fancybox.js) %>

@@ -1,22 +1,14 @@
 // ============ Import bootstrap ============
-// Core variables and mixins
-@import "_bootstrap/variables";
-@import "_bootstrap/mixins";
-@import "_bootstrap/custom";
-
-// Reset and dependencies
-@import "_bootstrap/normalize";
-@import "_bootstrap/print";
-
 // Core CSS
-@import "_bootstrap/reboot";
-@import "_bootstrap/type";
-@import "_bootstrap/images";
-@import "_bootstrap/code";
-@import "_bootstrap/grid";
-@import "_bootstrap/tables";
-@import "_bootstrap/forms";
-@import "_bootstrap/buttons";
+@import "_bootstrap/bootstrap-reboot";
+
+// @import "_bootstrap/type";
+// @import "_bootstrap/images";
+// @import "_bootstrap/code";
+// @import "_bootstrap/grid";
+// @import "_bootstrap/tables";
+// @import "_bootstrap/forms";
+// @import "_bootstrap/buttons";
 
 // Components
 // @import "_bootstrap/transitions";
@@ -39,7 +31,20 @@
 // @import "_bootstrap/close";
 
 // Utility classes
-@import "_bootstrap/utilities";
+// @import "_bootstrap/utilities";
+// @import "_bootstrap/utilities/align";
+// @import "_bootstrap/utilities/background";
+// @import "_bootstrap/utilities/borders";
+// @import "_bootstrap/utilities/clearfix";
+// @import "_bootstrap/utilities/display";
+// @import "_bootstrap/utilities/flex";
+// @import "_bootstrap/utilities/float";
+// @import "_bootstrap/utilities/position";
+// @import "_bootstrap/utilities/screenreaders";
+// @import "_bootstrap/utilities/sizing";
+// @import "_bootstrap/utilities/spacing";
+// @import "_bootstrap/utilities/text";
+// @import "_bootstrap/utilities/visibility";
 
 // ------------ Import bootstrap ------------
 
