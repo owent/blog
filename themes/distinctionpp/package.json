@@ -1,9 +1,0 @@
-{
-  "name": "hexo-theme-distinctionpp",
-  "version": "0.0.1",
-  "private": true,
-  "devDependencies": {},
-  "dependencies": {
-    "hexo-renderer-sass": "^0.3.2"
-  }
-}
