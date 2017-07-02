@@ -19,11 +19,11 @@ i18n:
 url: https://owent.net
 root: /
 permalink: :year/:id.html
-permalink_defaults:
+permalink_defaults: :year/:title.html
 
 # Directory
 source_dir: source
-public_dir: public
+public_dir: source/_posts
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
@@ -60,6 +60,14 @@ highlight:
 default_category: uncategorized
 category_map:
 tag_map:
+
+# theme configure
+menu:
+  Home: /
+  Archives: /archives
+  About: /about
+rss: /atom.xml
+favicon: /favicon.ico
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -126,3 +134,11 @@ toc:
   slugify: transliteration
 
 excerpt_depth: 5
+excerpt_characters: 300
+
+sitemap:
+    path: sitemap.xml
+    tag: true
+    category: false
+
+google_analytics: 'UA-19298704-1'
