@@ -148,3 +148,12 @@ sitemap:
 google_analytics: 'UA-19298704-1'
 disqus_shortname: owent
 disqus_on_page: false
+# gitment:
+#   enable_on_page: false
+#   js: https://imsun.github.io/gitment/dist/gitment.browser.js
+#   css: https://imsun.github.io/gitment/style/default.css
+#   owner: owt5008137
+#   repo: 'owent-blog-comment'
+#   oauth:
+#     client_id: 
+#     client_secret: 
