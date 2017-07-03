@@ -68,6 +68,10 @@ menu:
   About: /about
 rss: /atom.xml
 favicon: /favicon.ico
+widgets:
+- recent_posts
+- tagcloud
+- archive
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -142,3 +146,5 @@ sitemap:
     category: false
 
 google_analytics: 'UA-19298704-1'
+disqus_shortname: owent
+disqus_on_page: false
