@@ -18,7 +18,7 @@ i18n:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://owent.net
 root: /
-permalink: posts/:year/:id
+permalink: /:year/:id.html
 permalink_defaults: :year/:title
 
 # Directory
@@ -43,7 +43,7 @@ relative_link: false
 future: true
 highlight:
   enable: false         # set false to use highlight.js in client mode
-  style: "default"      # style name
+  style: "vs2015"      # style name
   langs: ['capnproto', 'cmake', 'd', 'dos', 'erlang', 'go', 'less', 'lua', 'php', 'powershell', 'protobuf', 'profile', 'typescript', 'vim']
   selector: 'pre>code'
   url:                  # 
