@@ -55,6 +55,12 @@ highlight:
     useBR: false
     #classPrefix: 'hljs-'
     languages: {}   # language alias
+search:
+  enable: true
+  url: //www.bing.com/search
+  keywork: q
+  sitename: q1
+  siteprefix: "site:"
 
 # Category & Tag
 default_category: uncategorized
