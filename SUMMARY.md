@@ -2,7 +2,8 @@
 
 * [About Me](source/about/index.md)
 * [2017](source/_posts/2017/README.md)
-  * [libcopp v2的一些优化思路](source/_posts/2017/1466.md)
+  * [Blog切换到Hugo](source/_posts/2017/1467.md)
+  * [libcopp v2的第一波优化完成](source/_posts/2017/1466.md)
   * [libcopp\(v2\) vs goroutine性能测试](source/_posts/2017/1465.md)
   * [libcopp的线程安全、栈池和merge boost.context 1.64.0](source/_posts/2017/1446.md)
   * [GCC 7和LLVM+Clang+libc++abi 4.0的构建脚本](source/_posts/2017/1431.md)
